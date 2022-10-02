@@ -1,0 +1,8 @@
+﻿ForceJump - 757DF0
+Engine_View_Matrix - 600F9C
+CLient_LocalPlayer - 724B58
+Client_LocalPlayer_FlagJump - F0
+Client_EntityList - 748524
+Client_EntityList_Health - E4
+Client_EntityList_Team - DC
+Client_EntityList_Vector3 - 11C
