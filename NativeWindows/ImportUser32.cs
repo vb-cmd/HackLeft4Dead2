@@ -11,6 +11,20 @@ namespace NativeWindows
         public static extern short GetAsyncKeyState(VirtualKey ArrowKeys);
         #endregion
 
+        #region Mouse
+        [DllImport("user32.dll")]
+        public static extern void mouse_event(MouseEventFlags dwFlags, int dx, int dy, uint dwData, int dwExtraInfo);
+
+        /// <summary>
+        /// Synthesizes keystrokes, mouse motions, and button clicks.
+        /// </summary>
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern uint SendInput(uint nInputs, ref Input pInputs, int cbSize);
+
+        [DllImport("user32.dll")]
+        public static extern bool SetCursorPos(int x, int y);
+        #endregion
+
         #region Window
         [DllImport("user32.dll", SetLastError = true)]
         public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);

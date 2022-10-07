@@ -1,28 +1,35 @@
 ﻿using System.Globalization;
 using System.IO;
 
-namespace HackLeft4Dead2.Data
+namespace HackLeft4Dead2.Hack
 {
     public static class Offset
     {
-        private static readonly string PATH_FILE_OFFSETS = Environment.CurrentDirectory + "/Data/File/offsets.txt";
+        public const int MAX_OBJECT = 800;
 
-        public const int MAX_PLAYER = 32;
         public static readonly int ForceJump;
+
+        public static readonly int Engine_View_Matrix;
+
         public static readonly int CLient_LocalPlayer;
         public static readonly int Client_LocalPlayer_FlagJump;
-        public static readonly int Engine_View_Matrix;
+
         public static readonly int Client_EntityList;
+        public static readonly int Client_EntityList_ID;
         public static readonly int Client_EntityList_Health;
         public static readonly int Client_EntityList_Team;
         public static readonly int Client_EntityList_Vector3;
+        public static readonly int Client_EntityList_Alive;
+        public static readonly int Client_EntityList_ClassId;
+        public static readonly int Client_EntityList_TopModel;
 
         static Offset()
         {
-            var data = File.ReadAllLines(PATH_FILE_OFFSETS).Select(a =>
-         {
-             return a.Split(" - ");
-         });
+            string PATH_FILE_OFFSETS = Environment.CurrentDirectory + "/Hack/File/offsets.txt";
+
+            var data = File
+                .ReadAllLines(PATH_FILE_OFFSETS)
+                .Select(a => a.Split(" - "));
 
             foreach (var item in data)
             {

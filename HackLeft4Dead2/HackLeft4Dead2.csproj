@@ -12,12 +12,12 @@
   <ItemGroup>
     <ProjectReference Include="..\KeybordManagement\KeybordManagement.csproj" />
     <ProjectReference Include="..\MemoryManagement\MemoryManagement.csproj" />
-    <ProjectReference Include="..\Overlay\Overlay.csproj" />
+    <ProjectReference Include="..\Overlay\OverlayManagement.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\File\offsets.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <None Update="Hack\File\offsets.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

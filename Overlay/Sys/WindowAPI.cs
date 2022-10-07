@@ -1,7 +1,7 @@
 ﻿using NativeWindows;
 using NativeWindows.Struct;
 
-namespace Overlay.Sys
+namespace OverlayManagement.Sys
 {
     internal static class WindowAPI
     {

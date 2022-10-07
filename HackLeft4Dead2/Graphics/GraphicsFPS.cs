@@ -1,22 +1,23 @@
-﻿using System.Diagnostics;
+﻿using HackLeft4Dead2.GraphicsSettings;
+using System.Diagnostics;
 
-namespace HackLeft4Dead2.Features
+namespace HackLeft4Dead2.Graphics
 {
 
-    public class FPS : IGraphics
+    public class GraphicsFPS : IGraphics
     {
         static readonly TimeSpan FpsUpdate = TimeSpan.FromSeconds(1);
 
         Stopwatch sw;
         int fpsCount;
-        double fps;
-        public double Fps => fps;
+        int fps;
+        public int Fps => fps;
 
-        public FPS()
+        public SettingFPS Setting { get; set; }
+
+        public GraphicsFPS()
         {
-            font = new("Arial", 16);
-            brush = Brushes.Gold;
-            pointF = new PointF(10, 10);
+            Setting = new();
             sw = Stopwatch.StartNew();
         }
 
@@ -25,7 +26,7 @@ namespace HackLeft4Dead2.Features
             var fpsTimerMs = sw.Elapsed;
             if (fpsTimerMs > FpsUpdate)
             {
-                fps = fpsCount / fpsTimerMs.TotalSeconds;
+                fps = (int)(fpsCount / fpsTimerMs.TotalSeconds);
                 sw.Restart();
                 fpsCount = 0;
             }
@@ -38,15 +39,15 @@ namespace HackLeft4Dead2.Features
             return $"FPS: {fps}";
         }
 
-
-        readonly Font font;
-        readonly Brush brush;
-        readonly PointF pointF;
-
         public void Render(PaintEventArgs e)
         {
-            Update();
-            e.Graphics.DrawString(this.ToString(), font, brush, pointF);
+            if (Setting.IsVisible)
+            {
+                var g = e.Graphics;
+
+                Update();
+                g.DrawString(ToString(), Setting.Font, Setting.FontBrush, Setting.Position);
+            }
         }
     }
 }

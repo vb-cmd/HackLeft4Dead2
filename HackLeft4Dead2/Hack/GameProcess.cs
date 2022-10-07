@@ -1,7 +1,7 @@
 ﻿using MemoryManagement;
 using System.Diagnostics;
 
-namespace HackLeft4Dead2.Data
+namespace HackLeft4Dead2.Hack
 {
     public class GameProcess : ThreadBase
     {
@@ -10,7 +10,13 @@ namespace HackLeft4Dead2.Data
              MODULE_CLIENT = "client.dll",
             MODULE_ENGINE = "engine.dll";
 
-        public bool IsWorkingGame => !ProcessGame?.HasExited ?? false;
+        public bool IsWorkingGame =>
+            !ProcessGame?.HasExited ?? false
+            && ModuleClient is not null
+            && ModuleEngine is not null;
+
+        protected override TimeSpan SleepUpdateTime { get; set; } = TimeSpan.FromMilliseconds(100);
+        protected override TimeSpan PauseTime { get; set; } = TimeSpan.FromMilliseconds(300);
 
         public Process? ProcessGame { get; private set; }
         public ProcessModuleExtension? ModuleClient { get; private set; }
@@ -56,19 +62,28 @@ namespace HackLeft4Dead2.Data
             return true;
         }
 
-        public override void Dispose()
+        private void Clear()
         {
             ProcessGame?.Dispose();
             ModuleClient?.Dispose();
             ModuleEngine?.Dispose();
+
+            ProcessGame = null;
+            ModuleClient = null;
+            ModuleEngine = null;
+        }
+
+        public override void Dispose()
+        {
+            this.Clear();
             base.Dispose();
         }
 
         public override void Update()
         {
-            if (IsWorkingGame is false)
+            if (!SearchProcessAndModules())
             {
-                SearchProcessAndModules();
+                Clear();
             }
         }
     }

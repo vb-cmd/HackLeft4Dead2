@@ -1,4 +1,4 @@
-﻿namespace HackLeft4Dead2.Data
+﻿namespace HackLeft4Dead2.Hack
 {
     public abstract class ThreadBase : IDisposable
     {
@@ -8,7 +8,7 @@
         protected virtual TimeSpan SleepUpdateTime { get; set; } = TimeSpan.FromMilliseconds(10);
         protected virtual TimeSpan PauseTime { get; set; } = TimeSpan.FromMilliseconds(100);
 
-        protected Thread ThreadCheat { get; private set; }
+        protected Thread? ThreadCheat { get; private set; }
 
         public ThreadBase()
         {
@@ -19,7 +19,7 @@
 
         public virtual void Start()
         {
-            ThreadCheat.Start();
+            ThreadCheat?.Start();
         }
 
         protected virtual void ThreadStart()
@@ -39,15 +39,10 @@
             }
         } 
 
-        public virtual void Stop()
-        {
-            IsWorkingThread = false;
-        }
-
         public virtual void Dispose()
         {
             IsWorkingThread = false;
-            ThreadCheat = default;
+            ThreadCheat = null;
         }
     }
 }

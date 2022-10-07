@@ -1,4 +1,6 @@
-﻿namespace Overlay
+﻿using Microsoft.VisualBasic.ApplicationServices;
+
+namespace OverlayManagement
 {
     public class WindowInformation
     {
@@ -6,10 +8,14 @@
         /// Game window name.
         /// </summary>
         private readonly string NAME_GAME_WINDOW;
+
+        private const int HEIGHT_TOP_PANEL = 25;
+
         /// <summary>
         /// Game window handle.
         /// </summary>
-        private nint HandleWindowGame => WindowAPI.FindWindow(NAME_GAME_WINDOW);
+        private nint HandleWindowGame;
+
         /// <summary>
         /// Game window client rectangle.
         /// </summary>
@@ -19,9 +25,9 @@
         /// Checking the window game by name.
         /// </summary>
         /// <returns>true if ptr and the current foreground Window is found, or false if not.</returns>
-        public bool IsValid => HandleWindowGame != IntPtr.Zero;
+        public bool IsValid { get; private set; }
 
-        public bool ForegroundWindow => WindowAPI.GetForegroundWindowCurrent(HandleWindowGame);
+        public bool IsWindowHasTopPanel { get; set; } = true;
 
         public WindowInformation(string nameWindow)
         {
@@ -33,9 +39,17 @@
         /// </summary>
         public void UpdateWindow()
         {
+            HandleWindowGame = WindowAPI.FindWindow(NAME_GAME_WINDOW);
+
+            IsValid = HandleWindowGame != IntPtr.Zero && WindowAPI.GetForegroundWindowCurrent(HandleWindowGame);
+
             if (IsValid)
             {
-                WindowRectangleClient = WindowAPI.GetWindowRectangle(HandleWindowGame);
+                var rect = WindowAPI.GetWindowRectangle(HandleWindowGame);
+
+                WindowRectangleClient = IsWindowHasTopPanel 
+                    ? new Rectangle(rect.X, rect.Y + HEIGHT_TOP_PANEL, rect.Width, rect.Height - HEIGHT_TOP_PANEL) 
+                    : rect;
             }
             else
             {

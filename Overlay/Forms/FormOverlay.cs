@@ -1,4 +1,4 @@
-namespace Overlay.Forms
+namespace OverlayManagement.Forms
 {
     internal class FormOverlay : Form
     {
@@ -19,10 +19,10 @@ namespace Overlay.Forms
             // 
             // FormOverlay
             // 
-            this.AutoScaleDimensions = new SizeF(7F, 15F);
+            this.AutoScaleDimensions = new SizeF(15F, 15F);
             this.AutoScaleMode = AutoScaleMode.Font;
             this.BackColor = Color.Gray;
-            this.ClientSize = new Size(27, 31);
+            this.ClientSize = new Size(15, 15);
             this.FormBorderStyle = FormBorderStyle.None;
             this.Name = "FormOverlay";
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -63,22 +63,21 @@ namespace Overlay.Forms
             //update information the window
             windowInformation.UpdateWindow();
 
-            if (windowInformation.ForegroundWindow)
+            if (windowInformation.IsValid)
             {
                 var rect = windowInformation.WindowRectangleClient;
                 this.Size = rect.Size;
                 this.Top = rect.Top;
                 this.Left = rect.Left;
-                this.WindowState = FormWindowState.Normal;
                 this.TopMost = true;
+                this.WindowState = FormWindowState.Normal;
             }
             else
             {
                 this.Size = Size.Empty;
                 this.Top = 0;
                 this.Left = 0;
-
-                this.WindowState = FormWindowState.Minimized;
+                this.TopMost = false;
             }
         }
 

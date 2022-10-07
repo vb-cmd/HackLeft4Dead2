@@ -1,6 +1,6 @@
-﻿using Overlay.Forms;
+﻿using OverlayManagement.Forms;
 
-namespace Overlay
+namespace OverlayManagement
 {
     public class OverlayWindow : IDisposable
     {

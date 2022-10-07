@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HackLeft4Dead2.Data
+﻿namespace HackLeft4Dead2.Hack
 {
     public class GameWindow : ThreadBase
     {
@@ -12,6 +6,8 @@ namespace HackLeft4Dead2.Data
 
         public OverlayWindow OverlayWindow { get; private set; }
         public WindowInformation WindowInformation { get; private set; }
+
+        protected override TimeSpan PauseTime { get; set; } = TimeSpan.FromMilliseconds(300);
 
         public GameWindow()
         {
@@ -23,6 +19,8 @@ namespace HackLeft4Dead2.Data
         {
             WindowInformation.UpdateWindow();
             OverlayWindow.Update();
+
+            base.IsRunning = WindowInformation.IsValid;
         }
 
         protected override void ThreadStart()
@@ -31,16 +29,12 @@ namespace HackLeft4Dead2.Data
 
             while (IsWorkingThread)
             {
-                if (IsRunning)
-                {
-                    Update();
+                Update();
 
+                if (IsRunning)
                     Thread.Sleep(SleepUpdateTime);
-                }
                 else
-                {
                     Thread.Sleep(PauseTime);
-                }
             }
 
             OverlayWindow.Dispose();

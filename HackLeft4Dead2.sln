@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Overlay", "Overlay\Overlay.csproj", "{1424C64D-10DD-4A0B-879A-49E780445CD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OverlayManagement", "Overlay\OverlayManagement.csproj", "{1424C64D-10DD-4A0B-879A-49E780445CD1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryManagement", "MemoryManagement\MemoryManagement.csproj", "{F551901C-DFC3-46BC-BA53-5F360A11316A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackLeft4Dead2", "HackLeft4Dead2\HackLeft4Dead2.csproj", "{577A585F-8398-4A48-97C4-A0146D06E791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HackLeft4Dead2", "HackLeft4Dead2\HackLeft4Dead2.csproj", "{577A585F-8398-4A48-97C4-A0146D06E791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeybordManagement", "KeybordManagement\KeybordManagement.csproj", "{33D0E979-285A-4656-882B-D7439614A1D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeybordManagement", "KeybordManagement\KeybordManagement.csproj", "{33D0E979-285A-4656-882B-D7439614A1D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeWindows", "NativeWindows\NativeWindows.csproj", "{C535A310-CD4C-4B3E-BD1C-2B0E7F98EA99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NativeWindows", "NativeWindows\NativeWindows.csproj", "{C535A310-CD4C-4B3E-BD1C-2B0E7F98EA99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
