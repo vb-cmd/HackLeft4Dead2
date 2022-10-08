@@ -163,10 +163,9 @@
             this.tabPageBunnyHop = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
             this.checkBoxBunnyHop = new System.Windows.Forms.CheckBox();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
-            this.checkBox39 = new System.Windows.Forms.CheckBox();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.label22 = new System.Windows.Forms.Label();
             this.tabPages.SuspendLayout();
             this.tabPageOverlayWindow.SuspendLayout();
             this.overlayWindow.SuspendLayout();
@@ -1810,8 +1809,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button7);
-            this.tabPage1.Controls.Add(this.checkBox39);
+            this.tabPage1.Controls.Add(this.label22);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -1820,25 +1818,14 @@
             this.tabPage1.Text = "AimBot";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // label22
             // 
-            this.button7.Location = new System.Drawing.Point(495, 6);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 5;
-            this.button7.Text = "Default";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox39
-            // 
-            this.checkBox39.AutoSize = true;
-            this.checkBox39.Checked = true;
-            this.checkBox39.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox39.Location = new System.Drawing.Point(8, 6);
-            this.checkBox39.Name = "checkBox39";
-            this.checkBox39.Size = new System.Drawing.Size(109, 19);
-            this.checkBox39.TabIndex = 4;
-            this.checkBox39.Text = "Control AimBot";
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(8, 16);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(34, 15);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "Soon";
             // 
             // FormHack
             // 
@@ -2021,7 +2008,6 @@
         private Button button6;
         private Button button2;
         private TabPage tabPage1;
-        private Button button7;
-        private CheckBox checkBox39;
+        private Label label22;
     }
 }

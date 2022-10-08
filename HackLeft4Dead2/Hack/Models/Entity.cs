@@ -6,7 +6,6 @@
         public ClassID ClassId { get; set; }
         public Rectangle PositionBox { get; set; }
         public (PointF pointA, PointF pointB) PositionLine { get; set; }
-        public Point PositionAim { get; set; }
         public PointF PositionRadar { get; set; }
         public bool IsAlive { get; set; }
         public Team Team { get; set; }

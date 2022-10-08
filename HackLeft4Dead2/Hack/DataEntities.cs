@@ -62,7 +62,6 @@ namespace HackLeft4Dead2.Hack
                     Entities[i].IsAlive = alive;
                     Entities[i].ClassId = classID;
                     Entities[i].TopModel = topModel;
-                    Entities[i].PositionAim = new Point(windowSize.X + positionAim.X, windowSize.Y + positionAim.Y);
                     Entities[i].PositionBox = new Rectangle
                     {
                         Location = new Point(positionTop.X - (positionTop.Y - positionBotton.Y) / 4, positionBotton.Y),

@@ -36,21 +36,21 @@
 
         public SettingBaseEntity()
         {
-            PenSurvivorPlayer = new Pen(Color.Red, 1);
+            PenSurvivorPlayer = new Pen(Color.Green, 1);
             PenSurvivorBot = new Pen(Color.Green, 1);
 
-            PenHunter = new Pen(Color.Blue, 1);
-            PenTank = new(Color.OliveDrab, 1);
-            PenWitch = new(Color.Olive);
-            PenSpitter = new(Color.Olive, 1);
-            PenSmoker = new(Color.Orchid, 1);
-            PenBoomer = new(Color.PaleGreen, 1);
-            PenJockey = new(Color.PaleGreen, 1);
-            PenCharger = new(Color.Orchid, 1);
-            PenInfected = new(Color.Orchid, 1);
+            PenHunter = new Pen(Color.Red, 1);
+            PenTank = new(Color.Red, 1);
+            PenWitch = new(Color.OrangeRed);
+            PenSpitter = new(Color.Red, 1);
+            PenSmoker = new(Color.Red, 1);
+            PenBoomer = new(Color.Red, 1);
+            PenJockey = new(Color.Red, 1);
+            PenCharger = new(Color.Red, 1);
+            PenInfected = new(Color.DarkRed, 1);
 
-            PenWeaponSpawn = new(Color.BurlyWood, 1);
-            PenWeaponAmmoSpawn = new(Color.BurlyWood, 1);
+            PenWeaponSpawn = new(Color.Blue, 1);
+            PenWeaponAmmoSpawn = new(Color.AliceBlue, 1);
         }
     }
 }

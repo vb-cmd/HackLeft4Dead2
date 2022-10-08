@@ -10,7 +10,7 @@
         {
             SizeObject = 10;
             Font = new("Ariel", 10);
-            FontBrush = Brushes.Violet;
+            FontBrush = Brushes.AntiqueWhite;
         }
     }
 }

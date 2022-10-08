@@ -12,8 +12,8 @@
         {
             BoxSizeObject = 5;
             BoxSizePlayer = 10;
-            BoxBrushPlayer = Brushes.DarkRed;
-            BoxBrush = Brushes.Orange;
+            BoxBrushPlayer = Brushes.GreenYellow;
+            BoxBrush = Brushes.DarkOrchid;
             BoxRectangle = new(0, 0, 300, 300);
         }
     }

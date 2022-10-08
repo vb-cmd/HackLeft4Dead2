@@ -6,9 +6,9 @@ namespace HackLeft4Dead2.GraphicsSettings
     {
         public SettingFPS()
         {
-            Font = new Font("Arial", 16);
+            Font = new Font("Arial", 15);
             FontBrush = Brushes.Gold;
-            Position = new PointF(10, 350);
+            Position = new PointF(10, 320);
         }
 
         public Font Font { get; set; }

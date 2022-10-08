@@ -10,7 +10,6 @@ namespace HackLeft4Dead2
         private GameProcess gameProcess;
         private DataEntities dataEntities;
         private BunnyHop bunnyHop;
-        private AimBot aimBot;
 
         private ThreadBase[] threads;
 
@@ -33,7 +32,6 @@ namespace HackLeft4Dead2
             gameProcess = new();
             dataEntities = new(gameProcess, gameWindow.WindowInformation);
             bunnyHop = new(gameProcess);
-            aimBot = new(dataEntities, gameWindow.WindowInformation);
 
 
             fps = new GraphicsFPS();
@@ -60,7 +58,6 @@ namespace HackLeft4Dead2
             dataEntities,
             bunnyHop,
             gameWindow,
-            aimBot
             };
 
             //start threads
