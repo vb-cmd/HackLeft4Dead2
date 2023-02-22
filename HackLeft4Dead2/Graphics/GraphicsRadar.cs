@@ -1,5 +1,4 @@
 ﻿using HackLeft4Dead2.GraphicsSettings;
-using NativeWindows.Struct;
 using System.Numerics;
 using GraphicsGDI = System.Drawing.Graphics;
 

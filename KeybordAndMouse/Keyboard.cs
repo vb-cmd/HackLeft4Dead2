@@ -1,16 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
-namespace NativeWindows.Struct
+namespace KeybordAndMouse
 {
-    [Flags]
+    public static class Keyboard
+    {
+        private static class ImportUser32
+        {
+            // DLL libraries used to manage hotkeys
+            [DllImport("User32.dll")]
+            public static extern short GetAsyncKeyState(VirtualKey ArrowKeys);
+        }
+
+        public static bool IsPressedSpace => IsPressedKey(VirtualKey.VK_SPACE);
+
+        public static bool IsPressedKey(VirtualKey key)
+        {
+            return ImportUser32.GetAsyncKeyState(key) < 0;
+        }
+    }
+
     /// <summary>
+    /// The following table shows the symbolic constant names, hexadecimal values, and mouse or keyboard equivalents for the virtual-key codes used by the system. The codes are listed in numeric order.
+    ///
     /// https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
     /// </summary>
+    [Flags]
     public enum VirtualKey
     {
         /// <summary> 

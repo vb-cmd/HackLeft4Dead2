@@ -1,4 +1,4 @@
-namespace OverlayManagement.Forms
+namespace Overlay.Forms
 {
     internal class FormOverlay : Form
     {
@@ -30,6 +30,7 @@ namespace OverlayManagement.Forms
             this.TransparencyKey = Color.Gray;
             this.Load += new EventHandler(this.FormOverlay_Load);
             this.ResumeLayout(false);
+            this.ShowInTaskbar = false;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -51,7 +52,7 @@ namespace OverlayManagement.Forms
         private void FormOverlay_Load(object sender, EventArgs e)
         {
             //https://learn.microsoft.com/en-us/dotnet/desktop/winforms/advanced/how-to-reduce-graphics-flicker-with-double-buffering-for-forms-and-controls?view=netframeworkdesktop-4.8
-            this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer, true);
+            this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
             this.WindowTransparent();
         }
 

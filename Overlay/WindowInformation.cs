@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
 
-namespace OverlayManagement
+namespace Overlay
 {
     public class WindowInformation
     {
@@ -26,8 +26,11 @@ namespace OverlayManagement
         /// </summary>
         /// <returns>true if ptr and the current foreground Window is found, or false if not.</returns>
         public bool IsValid { get; private set; }
-
-        public bool IsWindowHasTopPanel { get; set; } = true;
+        
+        /// <summary>
+        /// The game window has a top panel. Default value is false.
+        /// </summary>
+        public bool IsWindowHasTopPanel { get; set; } = false;
 
         public WindowInformation(string nameWindow)
         {
@@ -47,8 +50,8 @@ namespace OverlayManagement
             {
                 var rect = WindowAPI.GetWindowRectangle(HandleWindowGame);
 
-                WindowRectangleClient = IsWindowHasTopPanel 
-                    ? new Rectangle(rect.X, rect.Y + HEIGHT_TOP_PANEL, rect.Width, rect.Height - HEIGHT_TOP_PANEL) 
+                WindowRectangleClient = IsWindowHasTopPanel
+                    ? new Rectangle(rect.X, rect.Y + HEIGHT_TOP_PANEL, rect.Width, rect.Height - HEIGHT_TOP_PANEL)
                     : rect;
             }
             else

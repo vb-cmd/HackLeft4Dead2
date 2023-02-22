@@ -1,12 +1,51 @@
-﻿namespace MemoryManagement
+﻿namespace Memory
 {
     public static class Memory
     {
-        #region Read
+        private static class ConvertExtension
+        {
+            public static SModel ByteArrayToStructure<SModel>(byte[] bytesStructure) where SModel : struct
+            {
+                GCHandle handle = GCHandle.Alloc(bytesStructure, GCHandleType.Pinned);
+
+                try
+                {
+                    return Marshal.PtrToStructure<SModel>(handle.AddrOfPinnedObject());
+                }
+                finally
+                {
+                    handle.Free();
+                }
+            }
+
+            public static byte[] StructureToByteArray<SModel>(SModel modelStructure) where SModel : struct
+            {
+                int length = Marshal.SizeOf(modelStructure);
+
+                byte[] array = new byte[length];
+
+                IntPtr pointer = Marshal.AllocHGlobal(length);
+
+                Marshal.StructureToPtr(modelStructure, pointer, true);
+                Marshal.Copy(pointer, array, 0, length);
+                Marshal.FreeHGlobal(pointer);
+
+                return array;
+            }
+        }
+
+        private static class ImportKernel32
+        {
+            [DllImport("kernel32.dll")]
+            public static extern bool ReadProcessMemory(nint hProcess, nint lpBaseAddress, byte[] buffer, int size, out int lpNumberOfBytesRead);
+
+            [DllImport("kernel32.dll")]
+            public static extern bool WriteProcessMemory(nint hProcess, nint lpBaseAddress, byte[] buffer, int size, out int lpNumberOfBytesWritten);
+        }
 
         public static bool BaseRead(nint processHandle, nint baseAddress, byte[] buffer, out int countReadBytes)
         {
-            return ImportKernel32.ReadProcessMemory(processHandle, baseAddress, buffer, buffer.Length,  out countReadBytes);
+            return ImportKernel32.ReadProcessMemory(processHandle, baseAddress, buffer, buffer.Length, out countReadBytes);
         }
 
         public static SModel ReadStruct<SModel>(nint processHandle, nint baseAddress) where SModel : struct
@@ -72,10 +111,6 @@
             catch
             { return null; }
         }
-
-        #endregion
-
-        #region Write  
 
         public static bool BaseWrite(nint processHandle, nint baseAddress, byte[] buffer, out int countWriteBytes)
         {
@@ -143,8 +178,6 @@
 
             WriteBytes(processHandle, baseAddress, bytes);
         }
-
-        #endregion
     }
 
     public enum EncodeStringIn : byte

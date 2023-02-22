@@ -1,4 +1,4 @@
-﻿namespace OverlayManagement.Extension
+﻿namespace Overlay.Extension
 {
     internal static class FormExtension
     {

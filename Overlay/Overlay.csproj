@@ -7,9 +7,5 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\NativeWindows\NativeWindows.csproj" />
-  </ItemGroup>
-
+  
 </Project>

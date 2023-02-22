@@ -10,15 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KeybordManagement\KeybordManagement.csproj" />
-    <ProjectReference Include="..\MemoryManagement\MemoryManagement.csproj" />
-    <ProjectReference Include="..\Overlay\OverlayManagement.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Hack\File\offsets.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="..\KeybordAndMouse\KeybordAndMouse.csproj" />
+    <ProjectReference Include="..\Memory\Memory.csproj" />
+    <ProjectReference Include="..\Overlay\Overlay.csproj" />
   </ItemGroup>
 
 </Project>

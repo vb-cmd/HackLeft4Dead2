@@ -1,5 +1,4 @@
-﻿using MemoryManagement;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace HackLeft4Dead2.Hack
 {

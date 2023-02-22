@@ -1,4 +1,4 @@
-﻿namespace MemoryManagement
+﻿namespace Memory
 {
     public static class ProcessExtension
     {

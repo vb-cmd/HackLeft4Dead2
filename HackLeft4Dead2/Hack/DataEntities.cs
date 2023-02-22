@@ -18,7 +18,7 @@ namespace HackLeft4Dead2.Hack
 
         public DataEntities(GameProcess process, WindowInformation window)
         {
-            Entities = Enumerable.Range(0, Offset.MAX_OBJECT)
+            Entities = Enumerable.Range(0, Offset.MAX_OBJECTS)
                 .Select(i => new Entity()
                 {
                     Id = i,
@@ -36,19 +36,19 @@ namespace HackLeft4Dead2.Hack
             if (process.IsWorkingGame)
             {
                 var windowSize = window.WindowRectangleClient;
-                var matrix = process.ModuleEngine.MemoryReadStruct<Matrix4x4>(Offset.Engine_View_Matrix);
+                var matrix = process.ModuleEngine.MemoryReadStruct<Matrix4x4>(Offset.EngineViewMatrix);
 
                 for (int i = 0; i < Entities.Length; i++)
                 {
-                    var entity = process.ModuleClient.MemoryReadStruct<nint>(Offset.Client_EntityList + i * 0x8);
+                    var entity = process.ModuleClient.MemoryReadStruct<nint>(Offset.ClientEntityList + i * 0x8);
 
-                    var classID = (ClassID)process.ProcessGame.MemoryReadStruct<int>(entity + Offset.Client_EntityList_ClassId);
-                    var team = (Team)process.ProcessGame.MemoryReadStruct<int>(entity + Offset.Client_EntityList_Team);
-                    var health = process.ProcessGame.MemoryReadStruct<int>(entity + Offset.Client_EntityList_Health);
-                    var xyz = process.ProcessGame.MemoryReadStruct<Vector3>(entity + Offset.Client_EntityList_Vector3);
-                    var alive = process.ProcessGame.MemoryReadStruct<bool>(entity + Offset.Client_EntityList_Alive);
-                    var id = process.ProcessGame.MemoryReadStruct<int>(entity + Offset.Client_EntityList_ID);
-                    var topModel = process.ProcessGame.MemoryReadStruct<float>(entity + Offset.Client_EntityList_TopModel);
+                    var id = process.ProcessGame.MemoryReadStruct<int>(entity + Offset.ClientEntityListID);
+                    var team = (Team)process.ProcessGame.MemoryReadStruct<int>(entity + Offset.ClientEntityListTeam);
+                    var health = process.ProcessGame.MemoryReadStruct<int>(entity + Offset.ClientEntityListHealth);
+                    var alive = process.ProcessGame.MemoryReadStruct<bool>(entity + Offset.ClientEntityListAlive);
+                    var classID = (ClassID)process.ProcessGame.MemoryReadStruct<int>(entity + Offset.ClientEntityListClassId);
+                    var xyz = process.ProcessGame.MemoryReadStruct<Vector3>(entity + Offset.ClientEntityListVector3);
+                    var topModel = process.ProcessGame.MemoryReadStruct<float>(entity + Offset.ClientEntityListTopModel);
 
                     var positionTop = matrix.WorldOfScreen(new Vector3(xyz.X, xyz.Y, xyz.Z), windowSize.Size);
                     var positionBotton = matrix.WorldOfScreen(new Vector3(xyz.X, xyz.Y, xyz.Z + topModel), windowSize.Size);

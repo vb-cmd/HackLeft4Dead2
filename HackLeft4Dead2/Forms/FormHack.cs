@@ -1,5 +1,6 @@
 using HackLeft4Dead2.Hack;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace HackLeft4Dead2
 {
@@ -103,7 +104,7 @@ namespace HackLeft4Dead2
         {
             borderWindow.Setting = new();
             checkBoxBorder.Checked = borderWindow.Setting.IsVisible;
-            gameWindow.WindowInformation.IsWindowHasTopPanel = true;
+            gameWindow.WindowInformation.IsWindowHasTopPanel = false;
             checkBox38.Checked = gameWindow.WindowInformation.IsWindowHasTopPanel;
             panel44.BackColor = borderWindow.Setting.PenBorder.Color;
         }
@@ -199,7 +200,6 @@ namespace HackLeft4Dead2
             panel18.BackColor = lineESP.Setting.PenInfected.Color;
             panel17.BackColor = lineESP.Setting.PenWeaponSpawn.Color;
             panel16.BackColor = lineESP.Setting.PenWeaponAmmoSpawn.Color;
-
         }
 
         private void DefaultSettingRadar()

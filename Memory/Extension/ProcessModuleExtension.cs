@@ -1,4 +1,4 @@
-﻿namespace MemoryManagement
+﻿namespace Memory
 {
     public class ProcessModuleExtension : IDisposable
     {

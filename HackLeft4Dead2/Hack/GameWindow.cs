@@ -30,11 +30,7 @@
             while (IsWorkingThread)
             {
                 Update();
-
-                if (IsRunning)
-                    Thread.Sleep(SleepUpdateTime);
-                else
-                    Thread.Sleep(PauseTime);
+                Thread.Sleep(IsRunning ? SleepUpdateTime : PauseTime);
             }
 
             OverlayWindow.Dispose();

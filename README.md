@@ -1,6 +1,6 @@
 # HackLeft4Dead2
 
-![alt text](https://github.com/Cosmic-1/HackLeft4Dead2/blob/master/Images/image.png)
+![alt text](https://github.com/Cosmic-1/HackLeft4Dead2/blob/master/Assets/img.png)
 
 ## How to use?
 Just download this shit and build.

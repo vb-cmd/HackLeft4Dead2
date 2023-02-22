@@ -1,4 +1,4 @@
-﻿namespace OverlayManagement
+﻿namespace Overlay
 {
     /// <summary>
     /// Implement an interface for rendering in a window

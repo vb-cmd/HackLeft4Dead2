@@ -15,26 +15,20 @@
             {
                 if (Keyboard.IsPressedSpace)
                 {
-                    nint localPlayer = process.ModuleClient.MemoryReadStruct<int>(Offset.CLient_LocalPlayer);
+                    nint localPlayer = process.ModuleClient.MemoryReadStruct<int>(Offset.CLientLocalPlayer);
 
-                    var flag = process.ProcessGame.MemoryReadStruct<int>(localPlayer + Offset.Client_LocalPlayer_FlagJump);
+                    var flag = process.ProcessGame.MemoryReadStruct<int>(localPlayer + Offset.ClientLocalPlayerFlagJump);
 
-                    if (flag == 131 || flag == 129)
+                    // Check if the player is jumping
+                    int statusJump = flag switch
                     {
-                        process.ModuleClient.MemoryWriteStruct(Offset.ForceJump, (int)JumpState.Jump);
-                    }
-                    else
-                    {
-                        process.ModuleClient.MemoryWriteStruct(Offset.ForceJump, (int)JumpState.NoJump);
-                    }
+                        131 or 129 or 641 or 643 => 5, /* Jump */
+                        _ => 4 /* No Jump */
+                    };
+
+                    process.ModuleClient.MemoryWriteStruct(Offset.ClientForceJump, statusJump);
                 }
             }
-        }
-
-        private enum JumpState
-        {
-            NoJump = 4,
-            Jump = 5
         }
     }
 

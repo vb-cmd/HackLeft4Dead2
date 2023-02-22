@@ -1,6 +1,6 @@
-﻿global using OverlayManagement;
-global using MemoryManagement;
-global using KeybordManagement;
+﻿global using Overlay;
+global using Memory;
+global using KeybordAndMouse;
 
 global using HackLeft4Dead2;
 global using HackLeft4Dead2.Extension;
