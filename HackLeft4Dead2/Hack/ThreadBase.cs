@@ -5,7 +5,7 @@
         protected bool IsWorkingThread = true;
         public virtual bool IsRunning { get; set; } = true;
 
-        protected virtual TimeSpan SleepUpdateTime { get; set; } = TimeSpan.FromMilliseconds(10);
+        protected virtual TimeSpan SleepUpdateTime { get; set; } = TimeSpan.FromMilliseconds(5);
         protected virtual TimeSpan PauseTime { get; set; } = TimeSpan.FromMilliseconds(100);
 
         protected Thread ThreadCheat { get; private set; }

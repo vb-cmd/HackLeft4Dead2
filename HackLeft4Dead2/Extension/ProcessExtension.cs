@@ -28,6 +28,5 @@
 
         public static void MemoryWriteStruct<SModel>(this Process process, nint baseAddress, SModel model) where SModel : struct
         => Memory.WriteStruct(process.Handle, baseAddress, model);
-
     }
 }

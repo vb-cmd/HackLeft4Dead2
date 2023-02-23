@@ -7,8 +7,6 @@
         public OverlayWindow OverlayWindow { get; private set; }
         public WindowInformation WindowInformation { get; private set; }
 
-        protected override TimeSpan PauseTime { get; set; } = TimeSpan.FromMilliseconds(300);
-
         public GameWindow()
         {
             WindowInformation = new(nameWindow);
