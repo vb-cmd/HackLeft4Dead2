@@ -8,19 +8,17 @@
         protected virtual TimeSpan SleepUpdateTime { get; set; } = TimeSpan.FromMilliseconds(10);
         protected virtual TimeSpan PauseTime { get; set; } = TimeSpan.FromMilliseconds(100);
 
-        protected Thread? ThreadCheat { get; private set; }
+        protected Thread ThreadCheat { get; private set; }
 
-        public ThreadBase()
-        {
-            ThreadCheat = new Thread(ThreadStart);
-        }
+        public ThreadBase() 
+        =>ThreadCheat = new Thread(ThreadStart);
+        
 
         public abstract void Update();
 
         public virtual void Start()
-        {
-            ThreadCheat?.Start();
-        }
+        => ThreadCheat?.Start();
+        
 
         protected virtual void ThreadStart()
         {

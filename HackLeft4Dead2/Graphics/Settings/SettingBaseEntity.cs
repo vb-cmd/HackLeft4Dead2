@@ -1,6 +1,6 @@
-﻿namespace HackLeft4Dead2.GraphicsSettings
+﻿namespace HackLeft4Dead2.Graphics.Settings
 {
-    public class SettingBaseEntity:SettingBase
+    public class SettingBaseEntity : SettingBase
     {
         public bool IsVisibleSurvivorPlayer { get; set; } = true;
         public bool IsVisibleSurvivorBot { get; set; } = true;

@@ -5,10 +5,8 @@
         private readonly GameProcess process;
 
         public BunnyHop(GameProcess process)
-        {
-            this.process = process;
-        }
-#nullable disable
+        => this.process = process;
+        
         public override void Update()
         {
             if (process.IsWorkingGame)

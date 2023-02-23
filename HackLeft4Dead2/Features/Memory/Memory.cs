@@ -1,4 +1,4 @@
-﻿namespace Memory
+﻿namespace HackLeft4Dead2.Features.Memory
 {
     public static class Memory
     {
@@ -42,12 +42,7 @@
             [DllImport("kernel32.dll")]
             public static extern bool WriteProcessMemory(nint hProcess, nint lpBaseAddress, byte[] buffer, int size, out int lpNumberOfBytesWritten);
         }
-
-        public static bool BaseRead(nint processHandle, nint baseAddress, byte[] buffer, out int countReadBytes)
-        {
-            return ImportKernel32.ReadProcessMemory(processHandle, baseAddress, buffer, buffer.Length, out countReadBytes);
-        }
-
+        
         public static SModel ReadStruct<SModel>(nint processHandle, nint baseAddress) where SModel : struct
         {
             int ByteSize = Marshal.SizeOf(typeof(SModel));
@@ -60,41 +55,19 @@
         }
 
 
-        public static byte[]? ReadBytes(nint processHandle, nint baseAddress, int length)
+        public static byte[] ReadBytes(nint processHandle, nint baseAddress, int length)
         {
             byte[] output = new byte[length];
-            if (ImportKernel32.ReadProcessMemory(processHandle, baseAddress, output, output.Length, out int countReadBytes))
-                return output;
-            else
-                return null;
-        }
-
-        public static int ReadBytesCount(nint processHandle, nint baseAddress, int length, out byte[]? output)
-        {
-            output = new byte[length];
-
-            if (ImportKernel32.ReadProcessMemory(processHandle, baseAddress, output, length, out int countReadBytes))
-                return countReadBytes;
-            else
-                return 0;
+            ImportKernel32.ReadProcessMemory(processHandle, baseAddress, output, output.Length, out int countReadBytes);
+            return output;
         }
 
         public static bool TryReadBytes(nint processHandle, nint baseAddress, ref byte[] output)
-        {
-            if (output is null)
-                return false;
-            else if (ImportKernel32.ReadProcessMemory(processHandle, baseAddress, output, output.Length, out int countReadBytes))
-                return true;
-            else
-                return false;
-        }
+        => ImportKernel32.ReadProcessMemory(processHandle, baseAddress, output, output.Length, out int countReadBytes);
 
-        public static string? ReadStringByEncoding(nint processHandle, nint baseAddress, int length, EncodeStringIn encoding)
+        public static string ReadString(nint processHandle, nint baseAddress, int length, EncodeStringIn encoding)
         {
             var bytes = ReadBytes(processHandle, baseAddress, length);
-
-            if (bytes is null)
-                return null;
 
             try
             {
@@ -112,50 +85,24 @@
             { return null; }
         }
 
-        public static bool BaseWrite(nint processHandle, nint baseAddress, byte[] buffer, out int countWriteBytes)
-        {
-            return ImportKernel32.WriteProcessMemory(processHandle, baseAddress, buffer, buffer.Length, out countWriteBytes);
-        }
-
         public static void WriteStruct<SModel>(nint processHandle, nint baseAddress, SModel Value) where SModel : struct
         {
             byte[] buffer = ConvertExtension.StructureToByteArray(Value);
-
             ImportKernel32.WriteProcessMemory(processHandle, baseAddress, buffer, buffer.Length, out int countWriteBytes);
         }
 
-        public static int WriteBytesReturnCount(nint processHandle, nint baseAddress, byte[] byteArray)
-        {
-            if (byteArray is null) return 0;
-
-            if (ImportKernel32.WriteProcessMemory(processHandle, baseAddress, byteArray, byteArray.Length, out int countWriteBytes))
-            {
-                return countWriteBytes;
-            }
-
-            return 0;
-        }
 
         public static void WriteBytes(nint processHandle, nint baseAddress, byte[] byteArrey)
-        {
-            ImportKernel32.WriteProcessMemory(processHandle, baseAddress, byteArrey, byteArrey.Length, out int countWriteBytes);
-        }
+        => ImportKernel32.WriteProcessMemory(processHandle, baseAddress, byteArrey, byteArrey.Length, out int countWriteBytes);
+
 
         public static bool TryWriteBytes(nint processHandle, nint baseAddress, byte[] byteArrey)
-        {
-            if (byteArrey is null)
-                return false;
-            else if (ImportKernel32.WriteProcessMemory(processHandle, baseAddress, byteArrey, byteArrey.Length, out int countWriteBytes))
-                return true;
-            else
-                return false;
-        }
+        => ImportKernel32.WriteProcessMemory(processHandle, baseAddress, byteArrey, byteArrey.Length, out int countWriteBytes);
 
-        public static void WriteStringByEncoding(nint processHandle, nint baseAddress, string value, EncodeStringIn encoding)
-        {
-            if (value is null) return;
 
-            byte[]? bytes;
+        public static void WriteString(nint processHandle, nint baseAddress, string value, EncodeStringIn encoding)
+        {
+            byte[] bytes;
 
             try
             {
@@ -170,11 +117,7 @@
                 };
             }
             catch
-            {
-                return;
-            }
-
-            if (bytes is null) return;
+            { return; }
 
             WriteBytes(processHandle, baseAddress, bytes);
         }

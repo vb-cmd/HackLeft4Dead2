@@ -1,8 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Runtime.InteropServices;
-
-namespace KeybordAndMouse
+﻿namespace HackLeft4Dead2.Features.KeybordAndMouse
 {
     public static class Mouse
     {

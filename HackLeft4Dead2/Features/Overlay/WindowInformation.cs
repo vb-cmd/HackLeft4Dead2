@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-
-namespace Overlay
+﻿namespace HackLeft4Dead2.Features.Overlay
 {
     public class WindowInformation
     {
@@ -33,9 +31,8 @@ namespace Overlay
         public bool IsWindowHasTopPanel { get; set; } = false;
 
         public WindowInformation(string nameWindow)
-        {
-            NAME_GAME_WINDOW = nameWindow ?? throw new NullReferenceException(nameWindow);
-        }
+        => NAME_GAME_WINDOW = nameWindow ?? throw new NullReferenceException(nameWindow);
+        
 
         /// <summary>
         /// Update the window when the game window has changed size.

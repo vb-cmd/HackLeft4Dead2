@@ -1,6 +1,4 @@
-﻿using Overlay.Forms;
-
-namespace Overlay
+﻿namespace HackLeft4Dead2.Features.Overlay
 {
     public class OverlayWindow : IDisposable
     {
@@ -22,18 +20,14 @@ namespace Overlay
         }
 
         public void Show()
-        {
-            overlay.Show();
-        }
+        => overlay.Show();
+
 
         public void Update()
-        {
-            overlay.UpdateGraphics();
-        }
+        => overlay.UpdateGraphics();
+
 
         public void Dispose()
-        {
-            overlay.Close();
-        }
+        => overlay.Close();
     }
 }

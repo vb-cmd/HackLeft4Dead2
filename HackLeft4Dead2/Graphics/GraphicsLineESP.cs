@@ -1,5 +1,4 @@
-﻿using HackLeft4Dead2.GraphicsSettings;
-using GraphicsGDI = System.Drawing.Graphics;
+﻿using GraphicsGDI = System.Drawing.Graphics;
 
 namespace HackLeft4Dead2.Graphics
 {
@@ -25,7 +24,7 @@ namespace HackLeft4Dead2.Graphics
                 {
                     entity = data.Entities[i];
 
-                    if (entity.PositionLine.pointB.IsNotEmptyAll() && entity.PositionLine.pointB.IsNotEmptyAll())
+                    if (!entity.PositionLine.pointA.IsEmpty && !entity.PositionLine.pointB.IsEmpty)
                     {
                         switch (entity.ClassId)
                         {
@@ -91,8 +90,7 @@ namespace HackLeft4Dead2.Graphics
         }
 
         private void RenderEntity(GraphicsGDI graphics, Pen pen, Entity entity)
-        {
-            graphics.DrawLine(pen, entity.PositionLine.pointA, entity.PositionLine.pointB);
-        }
+        => graphics.DrawLine(pen, entity.PositionLine.pointA, entity.PositionLine.pointB);
+        
     }
 }

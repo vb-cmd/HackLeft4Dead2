@@ -1,20 +1,11 @@
-﻿using System.Diagnostics;
-using System.Numerics;
-using System.Text;
-using System.Threading;
-
-namespace HackLeft4Dead2.Hack
+﻿namespace HackLeft4Dead2.Hack
 {
     public class DataEntities : ThreadBase
     {
         private readonly GameProcess process;
         private readonly WindowInformation window;
 
-        public Entity[] Entities
-        {
-            get;
-            private set;
-        }
+        public Entity[] Entities { get; private set; }
 
         public DataEntities(GameProcess process, WindowInformation window)
         {
@@ -30,7 +21,7 @@ namespace HackLeft4Dead2.Hack
             this.process = process ?? throw new NullReferenceException(nameof(process));
             this.window = window ?? throw new NullReferenceException(nameof(window));
         }
-#nullable disable
+
         public override void Update()
         {
             if (process.IsWorkingGame)

@@ -1,4 +1,4 @@
-﻿namespace Overlay
+﻿namespace HackLeft4Dead2.Features.Overlay
 {
     /// <summary>
     /// Implement an interface for rendering in a window

@@ -1,6 +1,6 @@
-﻿namespace Overlay.Extension
+﻿namespace HackLeft4Dead2.Extension
 {
-    internal static class FormExtension
+    public static class FormExtension
     {
         /// <summary>
         /// Makes the window transparent

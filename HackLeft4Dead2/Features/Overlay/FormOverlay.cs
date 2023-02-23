@@ -1,4 +1,4 @@
-namespace Overlay.Forms
+namespace HackLeft4Dead2.Features.Overlay
 {
     internal class FormOverlay : Form
     {
@@ -7,7 +7,7 @@ namespace Overlay.Forms
         /// <summary>
         ///  Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.IContainer components;
 
         public FormOverlay(List<IGraphics> graphicsCollection, WindowInformation windowInformation)
         {

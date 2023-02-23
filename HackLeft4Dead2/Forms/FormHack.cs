@@ -1,12 +1,7 @@
-using HackLeft4Dead2.Hack;
-using System.Threading;
-using System.Windows.Forms;
-
 namespace HackLeft4Dead2
 {
     public partial class FormHack : Form
     {
-#nullable disable
         private GameWindow gameWindow;
         private GameProcess gameProcess;
         private DataEntities dataEntities;
@@ -19,7 +14,6 @@ namespace HackLeft4Dead2
         private GraphicsLineESP lineESP;
         private GraphicsBoxESP boxESP;
         private GraphicsRadar radar;
-#nullable enable
 
         public FormHack()
         {
@@ -90,7 +84,6 @@ namespace HackLeft4Dead2
         private bool CheckUnBox(object sender)
         {
             var check = (CheckBox)sender;
-
             return check.Checked;
         }
 
@@ -160,8 +153,8 @@ namespace HackLeft4Dead2
         {
             fps.Setting = new();
             checkBox2.Checked = fps.Setting.IsVisible;
-            numericUpDown2.Value = (int) fps.Setting.Position.X;
-            numericUpDown3.Value = (int) fps.Setting.Position.Y;
+            numericUpDown2.Value = (int)fps.Setting.Position.X;
+            numericUpDown3.Value = (int)fps.Setting.Position.Y;
             panel15.BackColor = ((SolidBrush)fps.Setting.FontBrush).Color;
         }
 
@@ -183,7 +176,7 @@ namespace HackLeft4Dead2
             checkBox7.Checked = lineESP.Setting.IsVisibleJockey;
             checkBox6.Checked = lineESP.Setting.IsVisibleCharger;
             checkBox5.Checked = lineESP.Setting.IsVisibleInfected;
-            checkBox4.Checked = lineESP.Setting.IsVisibleWeaponSpawn; 
+            checkBox4.Checked = lineESP.Setting.IsVisibleWeaponSpawn;
             checkBox3.Checked = lineESP.Setting.IsVisibleWeaponAmmoSpawn;
 
             //Choose a color
@@ -348,62 +341,62 @@ namespace HackLeft4Dead2
             boxESP.Setting.PenSurvivorPlayer.Color = ChooseColor(panel1).Color;
         }
 
-        private void panel2_Click(object? sender, EventArgs e)
+        private void panel2_Click(object sender, EventArgs e)
         {
             boxESP.Setting.PenSurvivorBot.Color = ChooseColor(panel2).Color;
         }
 
-        private void panel3_Click(object? sender, EventArgs e)
+        private void panel3_Click(object sender, EventArgs e)
         {
             boxESP.Setting.PenHunter.Color = ChooseColor(panel3).Color;
         }
 
-        private void panel4_Click(object? sender, EventArgs e)
+        private void panel4_Click(object sender, EventArgs e)
         {
             boxESP.Setting.PenTank.Color = ChooseColor(panel4).Color;
         }
 
-        private void panel5_Click(object? sender, EventArgs e)
+        private void panel5_Click(object sender, EventArgs e)
         {
             boxESP.Setting.PenWitch.Color = ChooseColor(panel5).Color;
         }
 
-        private void panel6_Click(object? sender, EventArgs e)
+        private void panel6_Click(object sender, EventArgs e)
         {
             boxESP.Setting.PenSpitter.Color = ChooseColor(panel6).Color;
         }
 
-        private void panel7_Click(object? sender, EventArgs e)
+        private void panel7_Click(object sender, EventArgs e)
         {
             boxESP.Setting.PenSmoker.Color = ChooseColor(panel7).Color;
         }
 
-        private void panel8_Click(object? sender, EventArgs e)
+        private void panel8_Click(object sender, EventArgs e)
         {
             boxESP.Setting.PenBoomer.Color = ChooseColor(panel8).Color;
         }
 
-        private void panel9_Click(object? sender, EventArgs e)
+        private void panel9_Click(object sender, EventArgs e)
         {
             boxESP.Setting.PenJockey.Color = ChooseColor(panel9).Color;
         }
 
-        private void panel10_Click(object? sender, EventArgs e)
+        private void panel10_Click(object sender, EventArgs e)
         {
             boxESP.Setting.PenCharger.Color = ChooseColor(panel10).Color;
         }
 
-        private void panel11_Click(object? sender, EventArgs e)
+        private void panel11_Click(object sender, EventArgs e)
         {
             boxESP.Setting.PenInfected.Color = ChooseColor(panel11).Color;
         }
 
-        private void panel12_Click(object? sender, EventArgs e)
+        private void panel12_Click(object sender, EventArgs e)
         {
             boxESP.Setting.PenWeaponSpawn.Color = ChooseColor(panel12).Color;
         }
 
-        private void panel13_Click(object? sender, EventArgs e)
+        private void panel13_Click(object sender, EventArgs e)
         {
             boxESP.Setting.PenWeaponAmmoSpawn.Color = ChooseColor(panel13).Color;
         }

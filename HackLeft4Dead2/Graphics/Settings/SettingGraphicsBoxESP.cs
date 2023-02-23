@@ -1,6 +1,6 @@
-﻿namespace HackLeft4Dead2.GraphicsSettings
+﻿namespace HackLeft4Dead2.Graphics.Settings
 {
-    public class SettingGraphicsBoxESP: SettingBaseEntity
+    public class SettingGraphicsBoxESP : SettingBaseEntity
     {
         public int SizeObject { get; set; }
         public Font Font { get; set; }

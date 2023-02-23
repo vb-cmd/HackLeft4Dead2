@@ -1,7 +1,4 @@
-﻿using System.Globalization;
-using System.IO;
-
-namespace HackLeft4Dead2.Hack
+﻿namespace HackLeft4Dead2.Hack
 {
     public static class Offset
     {

@@ -24,15 +24,5 @@
             }
             return returnVector;
         }
-
-        public static bool IsNotEmptyAll(this PointF point)
-        {
-            return point.X != 0 || point.Y != 0;
-        }
-
-        public static bool IsNotEmptySize(this Rectangle rectangle)
-        {
-            return rectangle.Height != 0 || rectangle.Width != 0;
-        }
     }
 }

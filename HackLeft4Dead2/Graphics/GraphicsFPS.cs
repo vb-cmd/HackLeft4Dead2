@@ -1,7 +1,4 @@
-﻿using HackLeft4Dead2.GraphicsSettings;
-using System.Diagnostics;
-
-namespace HackLeft4Dead2.Graphics
+﻿namespace HackLeft4Dead2.Graphics
 {
 
     public class GraphicsFPS : IGraphics
@@ -34,11 +31,9 @@ namespace HackLeft4Dead2.Graphics
             fpsCount++;
         }
 
-        public override string ToString()
-        {
-            return $"FPS: {fps}";
-        }
-
+        public override string ToString() 
+        => $"FPS: {fps}";
+        
         public void Render(PaintEventArgs e)
         {
             if (Setting.IsVisible)

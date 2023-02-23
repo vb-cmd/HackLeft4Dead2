@@ -24,7 +24,7 @@ namespace HackLeft4Dead2.Graphics
                 {
                     entity = data.Entities[i];
 
-                    if (entity.PositionLine.pointB.IsNotEmptyAll() && entity.PositionLine.pointB.IsNotEmptyAll())
+                    if (!entity.PositionBox.IsEmpty)
                     {
                         switch (entity.ClassId)
                         {

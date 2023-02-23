@@ -1,6 +1,4 @@
-﻿using HackLeft4Dead2.GraphicsSettings;
-using System.Numerics;
-using GraphicsGDI = System.Drawing.Graphics;
+﻿using GraphicsGDI = System.Drawing.Graphics;
 
 
 namespace HackLeft4Dead2.Graphics
@@ -134,13 +132,11 @@ namespace HackLeft4Dead2.Graphics
         }
 
         private void RenderBox(GraphicsGDI graphics, Brush brush, Rectangle rectangle)
-        {
-            graphics.FillRectangle(brush, rectangle);
-        }
+        => graphics.FillRectangle(brush, rectangle);
+        
 
         private void RenderPlayer(GraphicsGDI graphics, Brush brush, Rectangle rectangle)
-        {
-            graphics.FillEllipse(brush, rectangle.X + ((rectangle.Width / 2) - (Setting.BoxSizePlayer / 2)), rectangle.Y + ((rectangle.Height / 2) - (Setting.BoxSizePlayer / 2)), Setting.BoxSizePlayer, Setting.BoxSizePlayer);
-        }
+        => graphics.FillEllipse(brush, rectangle.X + ((rectangle.Width / 2) - (Setting.BoxSizePlayer / 2)), rectangle.Y + ((rectangle.Height / 2) - (Setting.BoxSizePlayer / 2)), Setting.BoxSizePlayer, Setting.BoxSizePlayer);
+        
     }
 }

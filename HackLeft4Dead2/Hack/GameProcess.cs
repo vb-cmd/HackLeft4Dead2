@@ -1,13 +1,11 @@
-﻿using System.Diagnostics;
-
-namespace HackLeft4Dead2.Hack
+﻿namespace HackLeft4Dead2.Hack
 {
     public class GameProcess : ThreadBase
     {
         private const string
              PROCESS_LEFT4DEAD2 = "left4dead2",
              MODULE_CLIENT = "client.dll",
-            MODULE_ENGINE = "engine.dll";
+             MODULE_ENGINE = "engine.dll";
 
         public bool IsWorkingGame =>
             !ProcessGame?.HasExited ?? false
@@ -17,9 +15,9 @@ namespace HackLeft4Dead2.Hack
         protected override TimeSpan SleepUpdateTime { get; set; } = TimeSpan.FromMilliseconds(100);
         protected override TimeSpan PauseTime { get; set; } = TimeSpan.FromMilliseconds(300);
 
-        public Process? ProcessGame { get; private set; }
-        public ProcessModuleExtension? ModuleClient { get; private set; }
-        public ProcessModuleExtension? ModuleEngine { get; private set; }
+        public Process ProcessGame { get; private set; }
+        public ProcessModuleExtension ModuleClient { get; private set; }
+        public ProcessModuleExtension ModuleEngine { get; private set; }
 
 
         public bool SearchProcessAndModules()

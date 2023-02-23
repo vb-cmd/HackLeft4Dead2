@@ -1,6 +1,6 @@
-﻿namespace HackLeft4Dead2.GraphicsSettings
+﻿namespace HackLeft4Dead2.Graphics.Settings
 {
-    public class SettingGraphicsRadar: SettingBaseEntity
+    public class SettingGraphicsRadar : SettingBaseEntity
     {
         public int BoxSizeObject { get; set; }
         public int BoxSizePlayer { get; set; }

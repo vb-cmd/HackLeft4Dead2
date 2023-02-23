@@ -1,8 +1,6 @@
-﻿using System.Drawing;
-
-namespace HackLeft4Dead2.GraphicsSettings
+﻿namespace HackLeft4Dead2.Graphics.Settings
 {
-    public class SettingFPS:SettingBase
+    public class SettingFPS : SettingBase
     {
         public SettingFPS()
         {
