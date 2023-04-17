@@ -14,7 +14,9 @@
             if (Setting.IsVisible)
             {
                 var g = e.Graphics;
-                g.DrawRectangle(Setting.PenBorder, 0, 0, e.ClipRectangle.Width, e.ClipRectangle.Height);
+                var rect = new Rectangle(0, 0, e.ClipRectangle.Width, e.ClipRectangle.Height);
+
+                g.DrawRectangle(Setting.PenBorder, rect);
             }
         }
     }

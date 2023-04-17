@@ -3,12 +3,10 @@
 
     public class GraphicsFPS : IGraphics
     {
-        static readonly TimeSpan FpsUpdate = TimeSpan.FromSeconds(1);
-
+        TimeSpan FpsUpdate = TimeSpan.FromSeconds(1);
         Stopwatch sw;
         int fpsCount;
-        int fps;
-        public int Fps => fps;
+        public int FPS { get; private set; }
 
         public SettingFPS Setting { get; set; }
 
@@ -23,7 +21,7 @@
             var fpsTimerMs = sw.Elapsed;
             if (fpsTimerMs > FpsUpdate)
             {
-                fps = (int)(fpsCount / fpsTimerMs.TotalSeconds);
+                FPS = (int)(fpsCount / fpsTimerMs.TotalSeconds);
                 sw.Restart();
                 fpsCount = 0;
             }
@@ -32,7 +30,7 @@
         }
 
         public override string ToString() 
-        => $"FPS: {fps}";
+        => $"FPS: {FPS}";
         
         public void Render(PaintEventArgs e)
         {

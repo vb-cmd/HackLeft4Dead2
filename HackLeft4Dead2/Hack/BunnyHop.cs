@@ -1,4 +1,6 @@
-﻿namespace HackLeft4Dead2.Hack
+﻿
+
+namespace HackLeft4Dead2.Hack
 {
     public class BunnyHop : ThreadBase
     {

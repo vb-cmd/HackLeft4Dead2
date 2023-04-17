@@ -1,4 +1,4 @@
-﻿namespace HackLeft4Dead2.Features.KeybordAndMouse
+﻿namespace HackLeft4Dead2.Features
 {
     public static class Mouse
     {

@@ -1,6 +1,6 @@
 ﻿namespace HackLeft4Dead2.Graphics.Settings
 {
-    public class SettingGraphicsBoxESP : SettingBaseEntity
+    public class SettingGraphicsBoxESP : SettingEntityBase
     {
         public int SizeObject { get; set; }
         public Font Font { get; set; }
@@ -9,7 +9,7 @@
         public SettingGraphicsBoxESP()
         {
             SizeObject = 10;
-            Font = new("Ariel", 10);
+            Font = new("Ariel", SizeObject);
             FontBrush = Brushes.AntiqueWhite;
         }
     }

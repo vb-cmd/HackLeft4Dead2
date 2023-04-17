@@ -1,6 +1,6 @@
-﻿namespace HackLeft4Dead2.Extension
+﻿namespace HackLeft4Dead2.Extensions
 {
-    public static class MathExtension
+    public static class Matrix4x4Extension
     {
         public static Point WorldOfScreen(this Matrix4x4 viewMatrix, Vector3 point3D, Size screenSize)
         {

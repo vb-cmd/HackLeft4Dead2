@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-
-namespace HackLeft4Dead2.Features.KeybordAndMouse
+﻿namespace HackLeft4Dead2.Features
 {
     public static class Keyboard
     {
@@ -49,127 +46,158 @@ namespace HackLeft4Dead2.Features.KeybordAndMouse
         VK_MBUTTON = 0x04,
 
         /// <summary> 
-        ///X1 mouse button///
+        ///X1 mouse button
+        ///
         VK_XBUTTON1 = 0x05,
 
         /// <summary> 
-        ///X2 mouse button///
+        ///X2 mouse button
+        ///
         VK_XBUTTON2 = 0x06,
 
         /// <summary> 
-        ///BACKSPACE key///
+        ///BACKSPACE key
+        ///
         VK_BACK = 0x08,
 
         /// <summary> 
-        ///TAB key///
+        ///TAB key
+        ///
         VK_TAB = 0x09,
 
         /// <summary> 
-        ///CLEAR key///
+        ///CLEAR key
+        ///
         VK_CLEAR = 0x0C,
 
         /// <summary> 
-        ///ENTER key///
+        ///ENTER key
+        ///
         VK_RETURN = 0x0D,
 
         /// <summary> 
-        ///SHIFT key///
+        ///SHIFT key
+        ///
         VK_SHIFT = 0x10,
 
         /// <summary> 
-        ///CTRL key///
+        ///CTRL key
+        ///
         VK_CONTROL = 0x11,
 
         /// <summary> 
-        ///ALT key///
+        ///ALT key
+        ///
         VK_MENU = 0x12,
 
         /// <summary> 
-        ///PAUSE key///
+        ///PAUSE key
+        ///
         VK_PAUSE = 0x13,
 
         /// <summary> 
-        ///CAPS LOCK key///
+        ///CAPS LOCK key
+        ///
         VK_CAPITAL = 0x14,
 
         /// <summary> 
-        ///IME Kana mode///
+        ///IME Kana mode
+        ///
         VK_KANA = 0x15,
 
         /// <summary> 
-        ///IME Hanguel mode (maintained for compatibility; use VK_HANGUL)///
+        ///IME Hanguel mode (maintained for compatibility; use VK_HANGUL)
+        ///
         VK_HANGUEL = 0x15,
 
         /// <summary> 
-        ///IME Hangul mode///
+        ///IME Hangul mode
+        ///
         VK_HANGUL = 0x15,
 
         /// <summary> 
-        ///IME Junja mode///
+        ///IME Junja mode
+        ///
         VK_JUNJA = 0x17,
 
         /// <summary> 
-        ///IME final mode///
+        ///IME final mode
+        ///
         VK_FINAL = 0x18,
 
         /// <summary> 
-        ///IME Hanja mode///
+        ///IME Hanja mode
+        ///
         VK_HANJA = 0x19,
 
         /// <summary> 
-        ///IME Kanji mode///
+        ///IME Kanji mode
+        ///
         VK_KANJI = 0x19,
 
         /// <summary> 
-        ///ESC key///
+        ///ESC key
+        ///
         VK_ESCAPE = 0x1B,
 
         /// <summary> 
-        ///IME convert///
+        ///IME convert
+        ///
         VK_CONVERT = 0x1C,
 
         /// <summary> 
-        ///IME nonconvert///
+        ///IME nonconvert
+        ///
         VK_NONCONVERT = 0x1D,
 
         /// <summary> 
-        ///IME accept///
+        ///IME accept
+        ///
         VK_ACCEPT = 0x1E,
 
         /// <summary> 
-        ///IME mode change request///
+        ///IME mode change request
+        ///
         VK_MODECHANGE = 0x1F,
 
         /// <summary> 
-        ///SPACEBAR///
+        ///SPACEBAR
+        ///
         VK_SPACE = 0x20,
 
         /// <summary> 
-        ///PAGE UP key///
+        ///PAGE UP key
+        ///
         VK_PRIOR = 0x21,
 
         /// <summary> 
-        ///PAGE DOWN key///
+        ///PAGE DOWN key
+        ///
         VK_NEXT = 0x22,
 
         /// <summary> 
-        ///END key///
+        ///END key
+        ///
         VK_END = 0x23,
 
         /// <summary> 
-        ///HOME key///
+        ///HOME key
+        ///
         VK_HOME = 0x24,
 
         /// <summary> 
-        ///LEFT ARROW key///
+        ///LEFT ARROW key
+        ///
         VK_LEFT = 0x25,
 
         /// <summary> 
-        ///UP ARROW key///
+        ///UP ARROW key
+        ///
         VK_UP = 0x26,
 
         /// <summary> 
-        ///RIGHT ARROW key///
+        ///RIGHT ARROW key
+        ///
         VK_RIGHT = 0x27,
 
         /// <summary> 
@@ -856,6 +884,5 @@ namespace HackLeft4Dead2.Features.KeybordAndMouse
         ///Clear key
         ///
         VK_OEM_CLEAR = 0xFE,
-
     }
 }

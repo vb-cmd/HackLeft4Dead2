@@ -53,6 +53,7 @@
                     Entities[i].IsAlive = alive;
                     Entities[i].ClassId = classID;
                     Entities[i].TopModel = topModel;
+                    Entities[i].PositionAim = positionAim;
                     Entities[i].PositionBox = new Rectangle
                     {
                         Location = new Point(positionTop.X - (positionTop.Y - positionBotton.Y) / 4, positionBotton.Y),

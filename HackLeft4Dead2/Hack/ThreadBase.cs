@@ -17,7 +17,7 @@
         public abstract void Update();
 
         public virtual void Start()
-        => ThreadCheat?.Start();
+            => ThreadCheat?.Start();
         
 
         protected virtual void ThreadStart()

@@ -9,8 +9,8 @@
 
         public GameWindow()
         {
-            WindowInformation = new(nameWindow);
-            OverlayWindow = new(WindowInformation);
+            OverlayWindow = new(nameWindow);
+            WindowInformation = OverlayWindow.WindowInformation;
         }
 
         public override void Update()

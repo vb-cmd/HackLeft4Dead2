@@ -26,85 +26,83 @@ namespace HackLeft4Dead2.Graphics
 
                     if (!entity.PositionBox.IsEmpty)
                     {
-                        switch (entity.ClassId)
-                        {
-                            case ClassID.SurvivorPlayer:
-                                if (entity.IsAlive && Setting.IsVisibleSurvivorPlayer)
-                                    RenderEntity(g, Setting.PenSurvivorPlayer, entity);
-                                break;
-                            case ClassID.SurvivorBot:
-                                if (entity.IsAlive && Setting.IsVisibleSurvivorBot)
-                                    RenderEntity(g, Setting.PenSurvivorBot, entity);
-                                break;
-                            case ClassID.Hunter:
-                                if (entity.IsAlive && Setting.IsVisibleHunter)
-                                    RenderEntity(g, Setting.PenHunter, entity);
-                                break;
-                            case ClassID.Tank:
-                                if (entity.IsAlive && Setting.IsVisibleTank)
-                                    RenderEntity(g, Setting.PenTank, entity);
-                                break;
-                            case ClassID.Spitter:
-                                if (entity.IsAlive && Setting.IsVisibleSpitter)
-                                    RenderEntity(g, Setting.PenSpitter, entity);
-                                break;
-                            case ClassID.Smoker:
-                                if (entity.IsAlive && Setting.IsVisibleSmoker)
-                                    RenderEntity(g, Setting.PenSmoker, entity);
-                                break;
-                            case ClassID.Boomer:
-                                if (entity.IsAlive && Setting.IsVisibleBoomer)
-                                    RenderEntity(g, Setting.PenBoomer, entity);
-                                break;
-                            case ClassID.Jockey:
-                                if (entity.IsAlive && Setting.IsVisibleJockey)
-                                    RenderEntity(g, Setting.PenJockey, entity);
-                                break;
-                            case ClassID.Charger:
-                                if (entity.IsAlive && Setting.IsVisibleCharger)
-                                    RenderEntity(g, Setting.PenCharger, entity);
-                                break;
-                            case ClassID.Witch:
-                                if (entity.IsAlive && Setting.IsVisibleWitch)
-                                    RenderEntity(g, Setting.PenWitch, entity);
-                                break;
-                            case ClassID.Infected:
-                                if (entity.IsAlive && Setting.IsVisibleInfected)
-                                    RenderEntity(g, Setting.PenInfected, entity);
-                                break;
-                            case ClassID.WeaponSpawn:
-                                if (Setting.IsVisibleWeaponSpawn)
-                                    RenderObject(g, Setting.PenWeaponSpawn, entity);
-                                break;
-                            case ClassID.WeaponAmmoSpawn:
-                                if (Setting.IsVisibleWeaponAmmoSpawn)
-                                    RenderObject(g, Setting.PenWeaponAmmoSpawn, entity);
-                                break;
-                            default:
-                                break;
-                        }
+                        SelectModel(g, entity);
                     }
                 }
             }
         }
 
-
-        private void RenderEntity(GraphicsGDI graphics, Pen pen, Entity entity)
+        private void SelectModel(GraphicsGDI g, Entity entity)
         {
-            graphics.DrawRectangle(pen, entity.PositionBox);
-
-            if (entity.Health > 0)
+            switch (entity.ClassId)
             {
-                //draw information about entity
-                string value = $"H:{entity.Health}";
-                graphics.DrawString(value, Setting.Font, Setting.FontBrush, entity.PositionBox.X, entity.PositionBox.Y - 15);
+                case ClassID.SurvivorPlayer:
+                    RenderEntity(g, Setting.SurvivorPlayer, entity);
+                    break;
+                case ClassID.SurvivorBot:
+                    RenderEntity(g, Setting.SurvivorBot, entity);
+                    break;
+                case ClassID.Hunter:
+                    RenderEntity(g, Setting.Hunter, entity);
+                    break;
+                case ClassID.Tank:
+                    RenderEntity(g, Setting.Tank, entity);
+                    break;
+                case ClassID.Spitter:
+                    RenderEntity(g, Setting.Spitter, entity);
+                    break;
+                case ClassID.Smoker:
+                    RenderEntity(g, Setting.Smoker, entity);
+                    break;
+                case ClassID.Boomer:
+                    RenderEntity(g, Setting.Boomer, entity);
+                    break;
+                case ClassID.Jockey:
+                    RenderEntity(g, Setting.Jockey, entity);
+                    break;
+                case ClassID.Charger:
+                    RenderEntity(g, Setting.Charger, entity);
+                    break;
+                case ClassID.Witch:
+                    RenderEntity(g, Setting.Witch, entity);
+                    break;
+                case ClassID.Infected:
+                    RenderEntity(g, Setting.Infected, entity);
+                    break;
+                case ClassID.WeaponSpawn:
+                    RenderObject(g, Setting.WeaponSpawn, entity);
+                    break;
+                case ClassID.WeaponAmmoSpawn:
+                    RenderObject(g, Setting.WeaponAmmoSpawn, entity);
+                    break;
+                default:
+                    break;
             }
         }
 
-        private void RenderObject(GraphicsGDI graphics, Pen pen, Entity entity)
+        private void RenderEntity(GraphicsGDI graphics, SettingModel settingModel, Entity entity)
         {
-            var rect = new Rectangle(entity.PositionBox.X - (Setting.SizeObject / 2), entity.PositionBox.Y - Setting.SizeObject, Setting.SizeObject, Setting.SizeObject);
-            graphics.FillEllipse(pen.Brush, rect);
+            if (entity.IsAlive && settingModel.IsVisible)
+            {
+                graphics.DrawRectangle(settingModel.Pen, entity.PositionBox);
+
+                if (entity.Health > 0)
+                {
+                    //draw information about entity
+                    string value = $"H:{entity.Health}";
+                    graphics.DrawString(value, Setting.Font, Setting.FontBrush, entity.PositionBox.X, entity.PositionBox.Y - 15);
+                }
+            }
+        }
+
+        private void RenderObject(GraphicsGDI graphics, SettingModel settingModel, Entity entity)
+        {
+            if (settingModel.IsVisible)
+            {
+                var sizeObject = Setting.SizeObject;
+                var rect = new Rectangle(entity.PositionBox.X - (sizeObject / 2), entity.PositionBox.Y - sizeObject, sizeObject, sizeObject);
+                graphics.FillEllipse(settingModel.Pen.Brush, rect);
+            }
         }
 
     }

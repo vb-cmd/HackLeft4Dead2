@@ -2,18 +2,19 @@ namespace HackLeft4Dead2
 {
     public partial class FormHack : Form
     {
-        private GameWindow gameWindow;
-        private GameProcess gameProcess;
-        private DataEntities dataEntities;
-        private BunnyHop bunnyHop;
+        GameWindow gameWindow;
+        GameProcess gameProcess;
+        DataEntities dataEntities;
+        BunnyHop bunnyHop;
+        AimBot aimBot;
 
-        private ThreadBase[] threads;
+        ThreadBase[] threads;
 
-        private GraphicsFPS fps;
-        private GraphicsBorderWindow borderWindow;
-        private GraphicsLineESP lineESP;
-        private GraphicsBoxESP boxESP;
-        private GraphicsRadar radar;
+        GraphicsFPS fps;
+        GraphicsBorderWindow borderWindow;
+        GraphicsLineESP lineESP;
+        GraphicsBoxESP boxESP;
+        GraphicsRadar radar;
 
         public FormHack()
         {
@@ -27,6 +28,7 @@ namespace HackLeft4Dead2
             gameProcess = new();
             dataEntities = new(gameProcess, gameWindow.WindowInformation);
             bunnyHop = new(gameProcess);
+            aimBot = new(dataEntities, gameWindow.WindowInformation);
 
 
             fps = new GraphicsFPS();
@@ -48,12 +50,7 @@ namespace HackLeft4Dead2
 
 
             //add threads
-            threads = new ThreadBase[] {
-            gameProcess,
-            dataEntities,
-            bunnyHop,
-            gameWindow,
-            };
+            threads = new ThreadBase[] { gameProcess, dataEntities, bunnyHop, gameWindow, aimBot };
 
             //start threads
             foreach (var item in threads)
@@ -103,19 +100,19 @@ namespace HackLeft4Dead2
 
 
             //Show Models
-            checkBoxSurvivorPlayer.Checked = boxESP.Setting.IsVisibleSurvivorPlayer;
-            checkBoxSurvivorBot.Checked = boxESP.Setting.IsVisibleSurvivorBot;
-            checkBoxHunter.Checked = boxESP.Setting.IsVisibleHunter;
-            checkBoxTank.Checked = boxESP.Setting.IsVisibleTank;
-            checkBoxWitch.Checked = boxESP.Setting.IsVisibleWitch;
-            checkBoxSpitter.Checked = boxESP.Setting.IsVisibleSpitter;
-            checkBox9.Checked = boxESP.Setting.IsVisibleSmoker;
-            checkBox8.Checked = boxESP.Setting.IsVisibleBoomer;
-            checkBox11.Checked = boxESP.Setting.IsVisibleJockey;
-            checkBox10.Checked = boxESP.Setting.IsVisibleCharger;
-            checkBox13.Checked = boxESP.Setting.IsVisibleInfected;
-            checkBox12.Checked = boxESP.Setting.IsVisibleWeaponSpawn;
-            checkBox14.Checked = boxESP.Setting.IsVisibleWeaponAmmoSpawn;
+            checkBoxSurvivorPlayer.Checked = boxESP.Setting.SurvivorPlayer.IsVisible;
+            checkBoxSurvivorBot.Checked = boxESP.Setting.SurvivorBot.IsVisible;
+            checkBoxHunter.Checked = boxESP.Setting.Hunter.IsVisible;
+            checkBoxTank.Checked = boxESP.Setting.Tank.IsVisible;
+            checkBoxWitch.Checked = boxESP.Setting.Witch.IsVisible;
+            checkBoxSpitter.Checked = boxESP.Setting.Spitter.IsVisible;
+            checkBox9.Checked = boxESP.Setting.Smoker.IsVisible;
+            checkBox8.Checked = boxESP.Setting.Boomer.IsVisible;
+            checkBox11.Checked = boxESP.Setting.Jockey.IsVisible;
+            checkBox10.Checked = boxESP.Setting.Charger.IsVisible;
+            checkBox13.Checked = boxESP.Setting.Infected.IsVisible;
+            checkBox12.Checked = boxESP.Setting.WeaponSpawn.IsVisible;
+            checkBox14.Checked = boxESP.Setting.WeaponAmmoSpawn.IsVisible;
         }
 
         private void DefaultSettingBunnyHop()
@@ -139,19 +136,19 @@ namespace HackLeft4Dead2
             checkBox23.Checked = lineESP.Setting.IsVisible;
 
             //Show models
-            checkBox22.Checked = lineESP.Setting.IsVisibleSurvivorPlayer;
-            checkBox21.Checked = lineESP.Setting.IsVisibleSurvivorBot;
-            checkBox20.Checked = lineESP.Setting.IsVisibleHunter;
-            checkBox19.Checked = lineESP.Setting.IsVisibleTank;
-            checkBox18.Checked = lineESP.Setting.IsVisibleWitch;
-            checkBox17.Checked = lineESP.Setting.IsVisibleSpitter;
-            checkBox16.Checked = lineESP.Setting.IsVisibleSmoker;
-            checkBox15.Checked = lineESP.Setting.IsVisibleBoomer;
-            checkBox7.Checked = lineESP.Setting.IsVisibleJockey;
-            checkBox6.Checked = lineESP.Setting.IsVisibleCharger;
-            checkBox5.Checked = lineESP.Setting.IsVisibleInfected;
-            checkBox4.Checked = lineESP.Setting.IsVisibleWeaponSpawn;
-            checkBox3.Checked = lineESP.Setting.IsVisibleWeaponAmmoSpawn;
+            checkBox22.Checked = lineESP.Setting.SurvivorPlayer.IsVisible;
+            checkBox21.Checked = lineESP.Setting.SurvivorBot.IsVisible;
+            checkBox20.Checked = lineESP.Setting.Hunter.IsVisible;
+            checkBox19.Checked = lineESP.Setting.Tank.IsVisible;
+            checkBox18.Checked = lineESP.Setting.Witch.IsVisible;
+            checkBox17.Checked = lineESP.Setting.Spitter.IsVisible;
+            checkBox16.Checked = lineESP.Setting.Smoker.IsVisible;
+            checkBox15.Checked = lineESP.Setting.Boomer.IsVisible;
+            checkBox7.Checked = lineESP.Setting.Jockey.IsVisible;
+            checkBox6.Checked = lineESP.Setting.Charger.IsVisible;
+            checkBox5.Checked = lineESP.Setting.Infected.IsVisible;
+            checkBox4.Checked = lineESP.Setting.WeaponSpawn.IsVisible;
+            checkBox3.Checked = lineESP.Setting.WeaponAmmoSpawn.IsVisible;
         }
 
         private void DefaultSettingRadar()
@@ -166,19 +163,19 @@ namespace HackLeft4Dead2
             numericUpDown8.Value = radar.Setting.BoxRectangle.Y;
 
             //Show models
-            checkBox36.Checked = radar.Setting.IsVisibleSurvivorPlayer;
-            checkBox35.Checked = radar.Setting.IsVisibleSurvivorBot;
-            checkBox34.Checked = radar.Setting.IsVisibleHunter;
-            checkBox33.Checked = radar.Setting.IsVisibleTank;
-            checkBox32.Checked = radar.Setting.IsVisibleWitch;
-            checkBox31.Checked = radar.Setting.IsVisibleSpitter;
-            checkBox30.Checked = radar.Setting.IsVisibleSmoker;
-            checkBox29.Checked = radar.Setting.IsVisibleBoomer;
-            checkBox28.Checked = radar.Setting.IsVisibleJockey;
-            checkBox27.Checked = radar.Setting.IsVisibleCharger;
-            checkBox26.Checked = radar.Setting.IsVisibleInfected;
-            checkBox25.Checked = radar.Setting.IsVisibleWeaponSpawn;
-            checkBox24.Checked = radar.Setting.IsVisibleWeaponAmmoSpawn;
+            checkBox36.Checked = radar.Setting.SurvivorPlayer.IsVisible;
+            checkBox35.Checked = radar.Setting.SurvivorBot.IsVisible;
+            checkBox34.Checked = radar.Setting.Hunter.IsVisible;
+            checkBox33.Checked = radar.Setting.Tank.IsVisible;
+            checkBox32.Checked = radar.Setting.Witch.IsVisible;
+            checkBox31.Checked = radar.Setting.Spitter.IsVisible;
+            checkBox30.Checked = radar.Setting.Smoker.IsVisible;
+            checkBox29.Checked = radar.Setting.Boomer.IsVisible;
+            checkBox28.Checked = radar.Setting.Jockey.IsVisible;
+            checkBox27.Checked = radar.Setting.Charger.IsVisible;
+            checkBox26.Checked = radar.Setting.Infected.IsVisible;
+            checkBox25.Checked = radar.Setting.WeaponSpawn.IsVisible;
+            checkBox24.Checked = radar.Setting.WeaponAmmoSpawn.IsVisible;
         }
 
 
@@ -191,7 +188,6 @@ namespace HackLeft4Dead2
 
         private void checkBox38_CheckedChanged(object sender, EventArgs e)
         {
-
             gameWindow.WindowInformation.IsWindowHasTopPanel = CheckUnBox(sender);
         }
 
@@ -206,67 +202,67 @@ namespace HackLeft4Dead2
         #region Show Model
         private void checkBoxSurvivorPlayer_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleSurvivorPlayer = CheckUnBox(sender);
+            boxESP.Setting.SurvivorPlayer.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBoxSurvivorBot_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleSurvivorBot = CheckUnBox(sender);
+            boxESP.Setting.SurvivorBot.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBoxHunter_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleHunter = CheckUnBox(sender);
+            boxESP.Setting.Hunter.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBoxTank_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleTank = CheckUnBox(sender);
+            boxESP.Setting.Tank.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBoxWitch_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleWitch = CheckUnBox(sender);
+            boxESP.Setting.Witch.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBoxSpitter_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleSpitter = CheckUnBox(sender);
+            boxESP.Setting.Spitter.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox9_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleSmoker = CheckUnBox(sender);
+            boxESP.Setting.Smoker.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleBoomer = CheckUnBox(sender);
+            boxESP.Setting.Boomer.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox11_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleJockey = CheckUnBox(sender);
+            boxESP.Setting.Jockey.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox10_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleCharger = CheckUnBox(sender);
+            boxESP.Setting.Charger.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox13_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleInfected = CheckUnBox(sender);
+            boxESP.Setting.Infected.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox12_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleWeaponSpawn = CheckUnBox(sender);
+            boxESP.Setting.WeaponSpawn.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox14_CheckedChanged(object sender, EventArgs e)
         {
-            boxESP.Setting.IsVisibleWeaponAmmoSpawn = CheckUnBox(sender);
+            boxESP.Setting.WeaponAmmoSpawn.IsVisible = CheckUnBox(sender);
         }
 
         #endregion
@@ -328,67 +324,67 @@ namespace HackLeft4Dead2
         #region Show Models
         private void checkBox22_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleSurvivorPlayer = CheckUnBox(sender);
+            lineESP.Setting.SurvivorPlayer.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox21_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleSurvivorBot = CheckUnBox(sender);
+            lineESP.Setting.SurvivorBot.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox20_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleHunter = CheckUnBox(sender);
+            lineESP.Setting.Hunter.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox19_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleTank = CheckUnBox(sender);
+            lineESP.Setting.Tank.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox18_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleWitch = CheckUnBox(sender);
+            lineESP.Setting.Witch.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox17_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleSpitter = CheckUnBox(sender);
+            lineESP.Setting.Spitter.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox16_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleSmoker = CheckUnBox(sender);
+            lineESP.Setting.Smoker.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox15_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleBoomer = CheckUnBox(sender);
+            lineESP.Setting.Boomer.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleJockey = CheckUnBox(sender);
+            lineESP.Setting.Jockey.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleCharger = CheckUnBox(sender);
+            lineESP.Setting.Charger.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleInfected = CheckUnBox(sender);
+            lineESP.Setting.Infected.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleWeaponSpawn = CheckUnBox(sender);
+            lineESP.Setting.WeaponSpawn.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            lineESP.Setting.IsVisibleWeaponAmmoSpawn = CheckUnBox(sender);
+            lineESP.Setting.WeaponAmmoSpawn.IsVisible = CheckUnBox(sender);
         }
         #endregion
 
@@ -449,67 +445,67 @@ namespace HackLeft4Dead2
         #region Show Models
         private void checkBox36_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleSurvivorPlayer = CheckUnBox(sender);
+            radar.Setting.SurvivorPlayer.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox35_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleSurvivorBot = CheckUnBox(sender);
+            radar.Setting.SurvivorBot.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox34_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleHunter = CheckUnBox(sender);
+            radar.Setting.Hunter.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox33_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleTank = CheckUnBox(sender);
+            radar.Setting.Tank.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox32_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleWitch = CheckUnBox(sender);
+            radar.Setting.Witch.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox31_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleSpitter = CheckUnBox(sender);
+            radar.Setting.Spitter.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox30_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleSmoker = CheckUnBox(sender);
+            radar.Setting.Smoker.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox29_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleBoomer = CheckUnBox(sender);
+            radar.Setting.Boomer.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox28_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleJockey = CheckUnBox(sender);
+            radar.Setting.Jockey.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox27_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleCharger = CheckUnBox(sender);
+            radar.Setting.Charger.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox26_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleInfected = CheckUnBox(sender);
+            radar.Setting.Infected.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox25_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleWeaponSpawn = CheckUnBox(sender);
+            radar.Setting.WeaponSpawn.IsVisible = CheckUnBox(sender);
         }
 
         private void checkBox24_CheckedChanged(object sender, EventArgs e)
         {
-            radar.Setting.IsVisibleWeaponAmmoSpawn = CheckUnBox(sender);
+            radar.Setting.WeaponAmmoSpawn.IsVisible = CheckUnBox(sender);
         }
         #endregion
 
