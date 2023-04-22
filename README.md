@@ -9,7 +9,7 @@ Just download this shit and build.
  - ESP (Box, Line)
  - Radar
  - BunnyHop
- - AimBot (I will try to do it soon)
+ - AimBot (Really bad aimbot but it works. I'll try to fix it later.)
 
 
-If you get VAC ban in your Steam account. I dont care. You download this shit and are responsible for it.
+If you get a VAC ban for your steam account. I don't care. You download this shit and you are responsible for it.
