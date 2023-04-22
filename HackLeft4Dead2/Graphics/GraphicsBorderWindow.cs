@@ -1,4 +1,6 @@
-﻿namespace HackLeft4Dead2.Graphics
+﻿using HackLeft4Dead2.Settings;
+
+namespace HackLeft4Dead2.Graphics
 {
     public class GraphicsBorderWindow : IGraphics
     {

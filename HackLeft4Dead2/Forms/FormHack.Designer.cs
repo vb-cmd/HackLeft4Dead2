@@ -113,7 +113,17 @@
             button2 = new Button();
             checkBoxBunnyHop = new CheckBox();
             tabPage1 = new TabPage();
-            label22 = new Label();
+            groupBox6 = new GroupBox();
+            checkBox48 = new CheckBox();
+            checkBox47 = new CheckBox();
+            checkBox46 = new CheckBox();
+            checkBox45 = new CheckBox();
+            checkBox44 = new CheckBox();
+            checkBox43 = new CheckBox();
+            checkBox42 = new CheckBox();
+            checkBox41 = new CheckBox();
+            checkBox40 = new CheckBox();
+            checkBox39 = new CheckBox();
             tabPages.SuspendLayout();
             tabPageOverlayWindow.SuspendLayout();
             overlayWindow.SuspendLayout();
@@ -137,6 +147,7 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown6).BeginInit();
             tabPageBunnyHop.SuspendLayout();
             tabPage1.SuspendLayout();
+            groupBox6.SuspendLayout();
             SuspendLayout();
             // 
             // tabPages
@@ -1176,7 +1187,8 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(label22);
+            tabPage1.Controls.Add(groupBox6);
+            tabPage1.Controls.Add(checkBox39);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -1185,14 +1197,152 @@
             tabPage1.Text = "AimBot";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label22
+            // groupBox6
             // 
-            label22.AutoSize = true;
-            label22.Location = new Point(8, 16);
-            label22.Name = "label22";
-            label22.Size = new Size(34, 15);
-            label22.TabIndex = 0;
-            label22.Text = "Soon";
+            groupBox6.Controls.Add(checkBox48);
+            groupBox6.Controls.Add(checkBox47);
+            groupBox6.Controls.Add(checkBox46);
+            groupBox6.Controls.Add(checkBox45);
+            groupBox6.Controls.Add(checkBox44);
+            groupBox6.Controls.Add(checkBox43);
+            groupBox6.Controls.Add(checkBox42);
+            groupBox6.Controls.Add(checkBox41);
+            groupBox6.Controls.Add(checkBox40);
+            groupBox6.Location = new Point(8, 31);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(200, 394);
+            groupBox6.TabIndex = 2;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Targets";
+            // 
+            // checkBox48
+            // 
+            checkBox48.AutoSize = true;
+            checkBox48.Checked = true;
+            checkBox48.CheckState = CheckState.Checked;
+            checkBox48.Location = new Point(20, 231);
+            checkBox48.Name = "checkBox48";
+            checkBox48.Size = new Size(69, 19);
+            checkBox48.TabIndex = 8;
+            checkBox48.Text = "Infected";
+            checkBox48.UseVisualStyleBackColor = true;
+            checkBox48.CheckedChanged += checkBox48_CheckedChanged;
+            // 
+            // checkBox47
+            // 
+            checkBox47.AutoSize = true;
+            checkBox47.Checked = true;
+            checkBox47.CheckState = CheckState.Checked;
+            checkBox47.Location = new Point(20, 206);
+            checkBox47.Name = "checkBox47";
+            checkBox47.Size = new Size(63, 19);
+            checkBox47.TabIndex = 7;
+            checkBox47.Text = "Hunter";
+            checkBox47.UseVisualStyleBackColor = true;
+            checkBox47.CheckedChanged += checkBox47_CheckedChanged;
+            // 
+            // checkBox46
+            // 
+            checkBox46.AutoSize = true;
+            checkBox46.Checked = true;
+            checkBox46.CheckState = CheckState.Checked;
+            checkBox46.Location = new Point(20, 181);
+            checkBox46.Name = "checkBox46";
+            checkBox46.Size = new Size(68, 19);
+            checkBox46.TabIndex = 6;
+            checkBox46.Text = "Charger";
+            checkBox46.UseVisualStyleBackColor = true;
+            checkBox46.CheckedChanged += checkBox46_CheckedChanged;
+            // 
+            // checkBox45
+            // 
+            checkBox45.AutoSize = true;
+            checkBox45.Checked = true;
+            checkBox45.CheckState = CheckState.Checked;
+            checkBox45.Location = new Point(20, 156);
+            checkBox45.Name = "checkBox45";
+            checkBox45.Size = new Size(61, 19);
+            checkBox45.TabIndex = 5;
+            checkBox45.Text = "Jockey";
+            checkBox45.UseVisualStyleBackColor = true;
+            checkBox45.CheckedChanged += checkBox45_CheckedChanged;
+            // 
+            // checkBox44
+            // 
+            checkBox44.AutoSize = true;
+            checkBox44.Checked = true;
+            checkBox44.CheckState = CheckState.Checked;
+            checkBox44.Location = new Point(20, 131);
+            checkBox44.Name = "checkBox44";
+            checkBox44.Size = new Size(68, 19);
+            checkBox44.TabIndex = 4;
+            checkBox44.Text = "Boomer";
+            checkBox44.UseVisualStyleBackColor = true;
+            checkBox44.CheckedChanged += checkBox44_CheckedChanged;
+            // 
+            // checkBox43
+            // 
+            checkBox43.AutoSize = true;
+            checkBox43.Checked = true;
+            checkBox43.CheckState = CheckState.Checked;
+            checkBox43.Location = new Point(20, 106);
+            checkBox43.Name = "checkBox43";
+            checkBox43.Size = new Size(66, 19);
+            checkBox43.TabIndex = 3;
+            checkBox43.Text = "Smoker";
+            checkBox43.UseVisualStyleBackColor = true;
+            checkBox43.CheckedChanged += checkBox43_CheckedChanged;
+            // 
+            // checkBox42
+            // 
+            checkBox42.AutoSize = true;
+            checkBox42.Checked = true;
+            checkBox42.CheckState = CheckState.Checked;
+            checkBox42.Location = new Point(20, 81);
+            checkBox42.Name = "checkBox42";
+            checkBox42.Size = new Size(60, 19);
+            checkBox42.TabIndex = 2;
+            checkBox42.Text = "Spitter";
+            checkBox42.UseVisualStyleBackColor = true;
+            checkBox42.CheckedChanged += checkBox42_CheckedChanged;
+            // 
+            // checkBox41
+            // 
+            checkBox41.AutoSize = true;
+            checkBox41.Checked = true;
+            checkBox41.CheckState = CheckState.Checked;
+            checkBox41.Location = new Point(20, 56);
+            checkBox41.Name = "checkBox41";
+            checkBox41.Size = new Size(57, 19);
+            checkBox41.TabIndex = 1;
+            checkBox41.Text = "Witch";
+            checkBox41.UseVisualStyleBackColor = true;
+            checkBox41.CheckedChanged += checkBox41_CheckedChanged;
+            // 
+            // checkBox40
+            // 
+            checkBox40.AutoSize = true;
+            checkBox40.Checked = true;
+            checkBox40.CheckState = CheckState.Checked;
+            checkBox40.Location = new Point(20, 31);
+            checkBox40.Name = "checkBox40";
+            checkBox40.Size = new Size(50, 19);
+            checkBox40.TabIndex = 0;
+            checkBox40.Text = "Tank";
+            checkBox40.UseVisualStyleBackColor = true;
+            checkBox40.CheckedChanged += checkBox40_CheckedChanged;
+            // 
+            // checkBox39
+            // 
+            checkBox39.AutoSize = true;
+            checkBox39.Checked = true;
+            checkBox39.CheckState = CheckState.Checked;
+            checkBox39.Location = new Point(8, 6);
+            checkBox39.Name = "checkBox39";
+            checkBox39.Size = new Size(109, 19);
+            checkBox39.TabIndex = 1;
+            checkBox39.Text = "Control AimBot";
+            checkBox39.CheckedChanged += checkBox39_CheckedChanged;
             // 
             // FormHack
             // 
@@ -1241,6 +1391,8 @@
             tabPageBunnyHop.PerformLayout();
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1326,11 +1478,21 @@
         private Button button6;
         private Button button2;
         private TabPage tabPage1;
-        private Label label22;
         private GroupBox groupBox3;
         private GroupBox groupBox2;
         private GroupBox groupBox1;
         private GroupBox groupBox5;
         private GroupBox groupBox4;
+        private CheckBox checkBox39;
+        private GroupBox groupBox6;
+        private CheckBox checkBox48;
+        private CheckBox checkBox47;
+        private CheckBox checkBox46;
+        private CheckBox checkBox45;
+        private CheckBox checkBox44;
+        private CheckBox checkBox43;
+        private CheckBox checkBox42;
+        private CheckBox checkBox41;
+        private CheckBox checkBox40;
     }
 }

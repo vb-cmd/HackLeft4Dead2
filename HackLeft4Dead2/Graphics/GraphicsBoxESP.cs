@@ -1,13 +1,14 @@
-﻿using GraphicsGDI = System.Drawing.Graphics;
+﻿using HackLeft4Dead2.Settings;
+using GraphicsGDI = System.Drawing.Graphics;
 
 namespace HackLeft4Dead2.Graphics
 {
     public class GraphicsBoxESP : IGraphics
     {
         public SettingGraphicsBoxESP Setting { get; set; }
-        private readonly DataEntities data;
+        private readonly Data data;
 
-        public GraphicsBoxESP(DataEntities data)
+        public GraphicsBoxESP(Data data)
         {
             Setting = new();
             this.data = data;

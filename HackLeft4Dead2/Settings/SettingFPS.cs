@@ -1,4 +1,4 @@
-﻿namespace HackLeft4Dead2.Graphics.Settings
+﻿namespace HackLeft4Dead2.Settings
 {
     public class SettingFPS : SettingBase
     {

@@ -2,7 +2,7 @@ global using HackLeft4Dead2.Extensions;
 global using HackLeft4Dead2.Hack;
 global using HackLeft4Dead2.Hack.Models;
 global using HackLeft4Dead2.Graphics;
-global using HackLeft4Dead2.Graphics.Settings;
+global using HackLeft4Dead2.Settings;
 global using HackLeft4Dead2.Features;
 global using OverlayManagement;
 global using MemoryManagement;

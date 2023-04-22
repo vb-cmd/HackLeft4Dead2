@@ -2,65 +2,6 @@
 {
     public static class Mouse
     {
-
-        /// <summary>
-        /// https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-taginput
-        /// </summary>
-        [StructLayout(LayoutKind.Explicit)]
-        private struct Input
-        {
-            [FieldOffset(0)] public SendInputEventType type;
-            [FieldOffset(4)] public MouseInput mi;
-            [FieldOffset(4)] public KeybdInput ki;
-            [FieldOffset(4)] public HardwareInput hi;
-        }
-        /// <summary>
-        /// https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-taginput
-        /// </summary>
-        private enum SendInputEventType
-        {
-            InputMouse,
-            InputKeyboard,
-            InputHardware
-        }
-        /// <summary>
-        /// https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-mouseinput
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        private struct MouseInput
-        {
-            public int dx;
-            public int dy;
-            public uint mouseData;
-            public MouseEventFlags dwFlags;
-            public uint time;
-            public IntPtr dwExtraInfo;
-        }
-
-        /// <summary>
-        /// https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-keybdinput
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        private struct KeybdInput
-        {
-            public ushort wVk;
-            public ushort wScan;
-            public uint dwFlags;
-            public uint time;
-            public IntPtr dwExtraInfo;
-        }
-
-        /// <summary>
-        /// https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-hardwareinput
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        private struct HardwareInput
-        {
-            public int uMsg;
-            public short wParamL;
-            public short wParamH;
-        }
-
         /// <summary>
         /// https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-mouseinput
         /// </summary>
@@ -85,89 +26,22 @@
         {
             [DllImport("user32.dll")]
             public static extern void mouse_event(MouseEventFlags dwFlags, int dx, int dy, uint dwData, int dwExtraInfo);
-
-            /// <summary>
-            /// Synthesizes keystrokes, mouse motions, and button clicks.
-            /// </summary>
-            [DllImport("user32.dll", SetLastError = true)]
-            public static extern uint SendInput(uint nInputs, ref Input pInputs, int cbSize);
-
-            [DllImport("user32.dll")]
-            public static extern bool SetCursorPos(int x, int y);
-        }
-
-        /// <summary>
-        /// Send mouse left down.
-        /// </summary>
-        public static void MouseLeftDown()
-        {
-            var mouseMoveInput = new Input
-            {
-                type = SendInputEventType.InputMouse,
-                mi =
-                {
-                    dwFlags = MouseEventFlags.MOUSEEVENTF_LEFTDOWN
-                },
-            };
-            ImportUser32.SendInput(1, ref mouseMoveInput, Marshal.SizeOf<Input>());
-        }
-
-        /// <summary>
-        /// Send mouse left up.
-        /// </summary>
-        public static void MouseLeftUp()
-        {
-            var mouseMoveInput = new Input
-            {
-                type = SendInputEventType.InputMouse,
-                mi =
-                {
-                    dwFlags = MouseEventFlags.MOUSEEVENTF_LEFTUP
-                },
-            };
-            ImportUser32.SendInput(1, ref mouseMoveInput, Marshal.SizeOf<Input>());
         }
 
         /// <summary>
         /// Send mouse move.
         /// </summary>
-        public static void MouseMove(int deltaX, int deltaY)
+        public static void SetMouse(int x, int y)
         {
-            var mouseMoveInput = new Input
-            {
-                type = SendInputEventType.InputMouse,
-                mi =
-                {
-                    dwFlags = MouseEventFlags.MOUSEEVENTF_ABSOLUTE|MouseEventFlags.MOUSEEVENTF_MOVE,
-                    dx = deltaX,
-                    dy = deltaY,
-                },
-            };
-            ImportUser32.SendInput(1, ref mouseMoveInput, Marshal.SizeOf<Input>());
-        }
-
-        /// <summary>
-        /// Send mouse move.
-        /// </summary>
-        public static void SetMouse(int deltaX, int deltaY, int sx, int sy)
-        {
-            int x = deltaX * (65536 / 10) / sx;
-            int y = deltaY * (65536 / 10) / sy;
-
             ImportUser32.mouse_event(MouseEventFlags.MOUSEEVENTF_ABSOLUTE | MouseEventFlags.MOUSEEVENTF_MOVE, x, y, 0, 0);
         }
 
-        public static bool SetCursorPosition(int x, int y)
+        /// <summary>
+        /// Send mouse move.
+        /// </summary>
+        public static void SetMouse(Point point)
         {
-            return ImportUser32.SetCursorPos(x, y);
-        }
-        public static bool SetCursorPosition(Point point)
-        {
-            return SetCursorPosition(point.X, point.Y);
-        }
-        public static bool SetCursorPosition(PointF point)
-        {
-            return SetCursorPosition((int)point.X, (int)point.Y);
+            SetMouse(point.X, point.Y);
         }
 
         public static bool IsPressedLeftButton

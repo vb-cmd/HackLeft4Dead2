@@ -1,55 +1,86 @@
-﻿
-namespace HackLeft4Dead2.Hack
+﻿namespace HackLeft4Dead2.Hack
 {
     public class AimBot : ThreadBase
     {
-        public AimBot(DataEntities data, WindowInformation windowInformation)
+        public SettingAimBot Setting { get; set; }
+        public AimBot(Data data, WindowInformation windowInformation)
         {
             Data = data;
             WindowInformation = windowInformation;
+
+            Setting = new SettingAimBot();
         }
 
-        public DataEntities Data { get; }
+        public Data Data { get; }
         public WindowInformation WindowInformation { get; }
 
         public override void Update()
         {
-           /* var height = WindowInformation.WindowRectangleClient.Height;
-            var wigth = WindowInformation.WindowRectangleClient.Width;
+            int height = WindowInformation.WindowRectangleClient.Height;
+            int width = WindowInformation.WindowRectangleClient.Width;
+            var entity = Data.Entities
+                .Where(e => e.IsAlive && CheckValidPositionAimOnScreen(width, height, e.PositionAim) && CheckIfTargetValid(e.ClassId))
+                .MaxBy(e => e.PositionBox.Height);
 
-            var topLeftPoint = new Point(wigth / 3, height / 3);
-            var bottomLeftPoint = new Point(topLeftPoint.X, topLeftPoint.Y + 100);
-            var topRightPoint = new Point(wigth / 2, wigth / 2);
-            var bottomRightPoint = new Point(topRightPoint.X, topRightPoint.Y + 100);
 
-            //Debug.WriteLine($"topLeftPoint:{topLeftPoint} | bottomLeftPoint:{bottomLeftPoint} | topRightPoint:{topRightPoint} | bottomRightPoint:{bottomRightPoint}");
+            if (Mouse.IsPressedLeftButton && (entity is not null))
+                Mouse.SetMouse(ConvertPositionAimForMouse(width, height, entity.PositionAim));
+        }
 
-            var entity = Data.Entities.FirstOrDefault((e) =>
+
+        private bool CheckIfTargetValid(ClassID id)
+        {
+            if (id == ClassID.Tank && Setting.TargetTank)
             {
-                var topLeftX = topLeftPoint.X > e.PositionAim.X;
-                var topLeftY = topLeftPoint.Y > e.PositionAim.Y;
+                return true;
+            }
+            else if (id == ClassID.Witch && Setting.TargetWitch)
+            {
+                return true;
+            }
+            else if (id == ClassID.Spitter && Setting.TargetSpitter)
+            {
+                return true;
+            }
+            else if (id == ClassID.Smoker && Setting.TargetSmoker)
+            {
+                return true;
+            }
+            else if (id == ClassID.Boomer && Setting.TargetBoomer)
+            {
+                return true;
+            }
+            else if (id == ClassID.Jockey && Setting.TargetJockey)
+            {
+                return true;
+            }
+            else if (id == ClassID.Charger && Setting.TargetCharger)
+            {
+                return true;
+            }
+            else if (id == ClassID.Hunter && Setting.TargetHunter)
+            {
+                return true;
+            }
+            else if (id == ClassID.Infected && Setting.TargetInfected)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-                var bottomLeftX = bottomLeftPoint.X < e.PositionAim.X;
-                var bottomLeftY = bottomLeftPoint.Y < e.PositionAim.Y;
+        private bool CheckValidPositionAimOnScreen(int width, int height, Point positionAim)
+        {
+            return positionAim.X < width && positionAim.X > 0 && positionAim.Y < height && positionAim.Y > 0;
+        }
 
-                var topRightX = topRightPoint.X > e.PositionAim.X;
-                var topRightY = topRightPoint.Y < e.PositionAim.Y;
-
-                var bottomRightX = bottomRightPoint.X < e.PositionAim.X;
-                var bottomRightY = bottomRightPoint.Y > e.PositionAim.Y;
-
-                return topLeftX && topLeftY 
-                && bottomLeftX && bottomLeftY 
-                && topRightX && topRightY 
-                && bottomRightX && bottomLeftY;
-            });
-*/
-
-            /* if (Mouse.IsPressedLeftButton && (entity is not null))
-             {
-                 Mouse.SetCursorPosition(entity.PositionAim);
-             }*/
-
+        private Point ConvertPositionAimForMouse(int width, int height, Point positionAim)
+        {
+            return new Point(positionAim.X - (width / 2), positionAim.Y - (height / 2));
         }
     }
 }
+

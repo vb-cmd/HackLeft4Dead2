@@ -1,4 +1,5 @@
-﻿using GraphicsGDI = System.Drawing.Graphics;
+﻿using HackLeft4Dead2.Settings;
+using GraphicsGDI = System.Drawing.Graphics;
 
 
 namespace HackLeft4Dead2.Graphics
@@ -6,9 +7,9 @@ namespace HackLeft4Dead2.Graphics
     public class GraphicsRadar : IGraphics
     {
         public SettingGraphicsRadar Setting { get; set; }
-        private readonly DataEntities data;
+        private readonly Data data;
 
-        public GraphicsRadar(DataEntities data)
+        public GraphicsRadar(Data data)
         {
             Setting = new SettingGraphicsRadar();
             this.data = data;

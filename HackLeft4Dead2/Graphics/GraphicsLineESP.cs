@@ -1,14 +1,15 @@
 ﻿using HackLeft4Dead2.Hack.Models;
+using HackLeft4Dead2.Settings;
 using GraphicsGDI = System.Drawing.Graphics;
 
 namespace HackLeft4Dead2.Graphics
 {
     public class GraphicsLineESP : IGraphics
     {
-        private readonly DataEntities data;
+        private readonly Data data;
         public SettingEntityBase Setting { get; set; }
 
-        public GraphicsLineESP(DataEntities data)
+        public GraphicsLineESP(Data data)
         {
             this.Setting = new();
             this.data = data;

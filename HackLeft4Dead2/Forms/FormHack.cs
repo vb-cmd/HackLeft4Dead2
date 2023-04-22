@@ -4,7 +4,7 @@ namespace HackLeft4Dead2
     {
         GameWindow gameWindow;
         GameProcess gameProcess;
-        DataEntities dataEntities;
+        Data dataEntities;
         BunnyHop bunnyHop;
         AimBot aimBot;
 
@@ -42,7 +42,7 @@ namespace HackLeft4Dead2
 
 
             //check process
-            if (!gameProcess.SearchProcessAndModules())
+            if (!gameProcess.Search())
             {
                 MessageBox.Show("The game process is not found. Run the game.");
                 Environment.Exit(0);
@@ -525,7 +525,55 @@ namespace HackLeft4Dead2
         #endregion
 
         #region AimBot
+        private void checkBox39_CheckedChanged(object sender, EventArgs e)
+        {
+            aimBot.IsRunning = CheckUnBox(sender);
+        }
 
+        private void checkBox40_CheckedChanged(object sender, EventArgs e)
+        {
+            aimBot.Setting.TargetTank = CheckUnBox(sender);
+        }
+        private void checkBox41_CheckedChanged(object sender, EventArgs e)
+        {
+            aimBot.Setting.TargetWitch = CheckUnBox(sender);
+        }
+
+        private void checkBox42_CheckedChanged(object sender, EventArgs e)
+        {
+            aimBot.Setting.TargetSpitter = CheckUnBox(sender);
+        }
+
+        private void checkBox43_CheckedChanged(object sender, EventArgs e)
+        {
+            aimBot.Setting.TargetSmoker = CheckUnBox(sender);
+        }
+
+        private void checkBox44_CheckedChanged(object sender, EventArgs e)
+        {
+            aimBot.Setting.TargetBoomer = CheckUnBox(sender);
+        }
+
+        private void checkBox45_CheckedChanged(object sender, EventArgs e)
+        {
+            aimBot.Setting.TargetJockey = CheckUnBox(sender);
+        }
+
+        private void checkBox46_CheckedChanged(object sender, EventArgs e)
+        {
+            aimBot.Setting.TargetCharger = CheckUnBox(sender);
+        }
+
+        private void checkBox47_CheckedChanged(object sender, EventArgs e)
+        {
+            aimBot.Setting.TargetHunter = CheckUnBox(sender);
+        }
+
+        private void checkBox48_CheckedChanged(object sender, EventArgs e)
+        {
+            aimBot.Setting.TargetInfected = CheckUnBox(sender);
+        }
         #endregion
+
     }
 }

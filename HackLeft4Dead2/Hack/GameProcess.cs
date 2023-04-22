@@ -7,10 +7,27 @@
              MODULE_CLIENT = "client.dll",
              MODULE_ENGINE = "engine.dll";
 
-        public bool IsWorkingGame =>
-            !ProcessGame?.HasExited ?? false
-            && ModuleClient is not null
-            && ModuleEngine is not null;
+        public bool IsWorkingGame => (ProcessGame is not null) && (ModuleClient is not null) && (ModuleEngine is not null);
+
+        private bool IsRunningGame
+        {
+            get
+            {
+                try
+                {
+                    Process.GetProcessById(ProcessGame.Id);
+                }
+                catch (InvalidOperationException)
+                {
+                    return false;
+                }
+                catch (ArgumentException)
+                {
+                    return false;
+                }
+                return true;
+            }
+        }
 
         protected override TimeSpan SleepUpdateTime { get; set; } = TimeSpan.FromMilliseconds(100);
         protected override TimeSpan PauseTime { get; set; } = TimeSpan.FromMilliseconds(300);
@@ -20,41 +37,31 @@
         public ProcessModuleExtension ModuleEngine { get; private set; }
 
 
-        public bool SearchProcessAndModules()
+        public bool Search()
         {
-            if (ProcessGame is null)
-            {
-                var process = ProcessExtension.GetSingleProcessByName(PROCESS_LEFT4DEAD2);
-                ProcessGame = process;
-            }
+            return SearchProcess() && SearchModuleClient() && SearchModuleEngine();
+        }
 
-            if (ProcessGame is null || IsWorkingGame is false)
-            {
-                return false;
-            }
+        private bool SearchProcess()
+        {
+            if (ProcessGame is null) ProcessGame = ProcessExtension.GetSingleProcessByName(PROCESS_LEFT4DEAD2);
+            if (ProcessGame is null || !IsRunningGame) return false;
 
+            return true;
+        }
 
-            if (ModuleClient is null)
-            {
-                var client = ProcessGame.GetProcessModuleExtensionByName(MODULE_CLIENT);
-                ModuleClient = client;
-            }
+        private bool SearchModuleClient()
+        {
+            if (ModuleClient is null) ModuleClient = ProcessGame.GetProcessModuleExtensionByName(MODULE_CLIENT);
+            if (ModuleClient is null) return false;
 
-            if (ModuleClient is null || IsWorkingGame is false)
-            {
-                return false;
-            }
+            return true;
+        }
 
-            if (ModuleEngine is null)
-            {
-                var engine = ProcessGame.GetProcessModuleExtensionByName(MODULE_ENGINE);
-                ModuleEngine = engine;
-            }
-
-            if (ModuleEngine is null || IsWorkingGame is false)
-            {
-                return false;
-            }
+        private bool SearchModuleEngine()
+        {
+            if (ModuleEngine is null) ModuleEngine = ProcessGame.GetProcessModuleExtensionByName(MODULE_ENGINE);
+            if (ModuleEngine is null) return false;
 
             return true;
         }
@@ -78,10 +85,7 @@
 
         public override void Update()
         {
-            if (!SearchProcessAndModules())
-            {
-                Clear();
-            }
+            if (!Search()) Clear();
         }
     }
 }
