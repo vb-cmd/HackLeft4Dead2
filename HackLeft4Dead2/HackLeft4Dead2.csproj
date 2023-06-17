@@ -11,12 +11,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Reference Include="MemoryManagement">
-	    <HintPath>..\Libraries\MemoryManagement.dll</HintPath>
-	  </Reference>
-	  <Reference Include="OverlayManagement">
-	    <HintPath>..\Libraries\OverlayManagement.dll</HintPath>
-	  </Reference>
+	  <ProjectReference Include="..\MemoryManagement\MemoryManagement.csproj" />
+	  <ProjectReference Include="..\OverlayManagement\OverlayManagement.csproj" />
 	</ItemGroup>
 
 </Project>
