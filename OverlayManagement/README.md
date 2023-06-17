@@ -1,7 +1,7 @@
 # OverlayManagement
 Library that allows you to render visuals to other windows.
 
-![alt text](https://github.com/Cosmic-1/OverlayWindow.NET/blob/master/Assets/img.jpg)
+![alt text](https://raw.githubusercontent.com/Cosmic-1/HackLeft4Dead2/master/OverlayManagement/Assets/img.jpg)
 
 ## How to use?
 You need to implement the interface in your class.
