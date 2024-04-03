@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<Nullable>Disable</Nullable>
+		<UseWindowsForms>true</UseWindowsForms>
+		<ImplicitUsings>Disable</ImplicitUsings>
+		<PlatformTarget>x86</PlatformTarget>
+		<PublishSingleFile>true</PublishSingleFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="ReaLTaiizor" Version="3.8.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Device\Device.csproj" />
+	  <ProjectReference Include="..\Hack\Hack.csproj" />
+	  <ProjectReference Include="..\Memory\Memory.csproj" />
+	  <ProjectReference Include="..\Overlay\Overlay.csproj" />
+	</ItemGroup>
+
+</Project>
