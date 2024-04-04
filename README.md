@@ -1,6 +1,6 @@
 # HackLeft4Dead2
 
-![Test](https://raw.githubusercontent.com/vitalii-bakun/HackLeft4Dead2/master/Assets/main.png)
+![Test](https://github.com/vitalii-bakun/HackLeft4Dead2/blob/master/Assets/main.png)
 
 ## How to use?
 Just download this shit and build.
