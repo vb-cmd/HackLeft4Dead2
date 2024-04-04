@@ -1,7 +1,7 @@
 # OverlayManagement
 Library that allows you to render visuals to other windows.
 
-![Test](https://raw.githubusercontent.com/vitalii-bakun/HackLeft4Dead2/master/Assets/overlay.jpg)
+![Test](https://github.com/vitalii-bakun/HackLeft4Dead2/blob/master/Assets/overlay.jpg)
 
 ## How to use?
 You need to implement the interface in your class.
